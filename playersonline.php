@@ -57,7 +57,7 @@ $charMainLevel = array();
 $charSubJob = array();
 $charSubLevel = array();
 $charZoneName = array();
-$charAnon = array();
+$charFlags = array();
 
 // Data for Online Table
 try {
@@ -66,7 +66,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $getAccountsSessions  = $conn->query('
         SELECT
-	    c.charid,
+            c.charid,
             c.charname,
             c.nation,
             REPLACE(z.name, "_", " ") zonename,
@@ -74,7 +74,7 @@ try {
             s.mlvl,
             s.sjob,
             s.slvl,
-            s.nameflags & ' . $flagID["FLAG_ANON"] . ' anonflag
+            s.nameflags
         FROM chars c
         LEFT JOIN zone_settings z ON z.zoneid = c.pos_zone
         INNER JOIN char_stats s ON s.charid = c.charid
@@ -90,7 +90,7 @@ try {
         $charSubJob[$i] = $accountsSessionsRow['sjob'];
         $charSubLevel[$i] = $accountsSessionsRow['slvl'];
         $charZoneName[$i] = $accountsSessionsRow['zonename'];
-        $charAnon[$i] = $accountsSessionsRow['anonflag'];
+        $charFlags[$i] = $accountsSessionsRow['nameflags'];
         $i = $i + 1;
     }
 }
@@ -115,7 +115,7 @@ for ($x = 0; $x < $i ; $x+=1)
 {
     $mainJob = $jobID[$charMainJob[$x]];
     $subJob = $jobID[$charSubJob[$x]];
-    if (! $charAnon[$x])
+    if ( !($charFlags[$x] & $flagID["FLAG_ANON"]))
     {
         if ($charSubLevel[$x] != 0)
         {
@@ -124,7 +124,7 @@ for ($x = 0; $x < $i ; $x+=1)
             echo "<tr><td>$charName[$x]</td><td>$charZoneName[$x]</td><td>$charMainLevel[$x] $mainJob</td><td></td></tr>";
         }
     } else {
-        echo "<tr><td>$charName[$x]</td><td>*****</td><td>*****</td><td></td>*****</tr>";
+        echo "<tr><td>$charName[$x]</td><td>*****</td><td>*****</td><td>*****</tr>";
     }
 }
 echo "</table></br></br>";
