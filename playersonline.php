@@ -52,7 +52,6 @@ $flagID = array(
 $charId = array();
 $charName = array();
 $charNation = array();
-$charZoneId = array();
 $charMainJob = array();
 $charMainLevel = array();
 $charSubJob = array();
@@ -65,32 +64,24 @@ try {
     $conn = new PDO("mysql:host=$dbServer;dbname=$dbName", $dbUser, $dbPass);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $getAccountsSessions  = $conn->query('SELECT charid FROM accounts_sessions');
+    $getAccountsSessions  = $conn->query('
+        SELECT c.charid, c.charname, c.nation, z.name zonename, s.mjob, s.mlvl, s.sjob, s.slvl, s.nameflags
+        FROM chars c
+        LEFT JOIN zone_settings z ON z.zoneid = c.pos_zone
+        INNER JOIN char_stats s ON s.charid = c.charid
+        WHERE c.charid = ANY(SELECT charid FROM accounts_sessions);');
     $i = 0;
     while ($accountsSessionsRow = $getAccountsSessions->fetch())
     {
         $charId[$i] = $accountsSessionsRow['charid'];
-        $getChars = $conn->query("SELECT * FROM chars WHERE charid = '$charId[$i]'");
-        while ($charsRow = $getChars->fetch())
-        {
-            $charName[$i] = $charsRow['charname'];
-            $charNation[$i] = $charsRow['nation'];
-            $charZoneId[$i] = $charsRow['pos_zone'];
-        }
-        $getCharStats = $conn->query("SELECT * FROM char_stats WHERE charid = '$charId[$i]'");
-        while ($charStatsRow = $getCharStats->fetch())
-        {
-            $charMainJob[$i] = $charStatsRow['mjob'];
-            $charMainLevel[$i] = $charStatsRow['mlvl'];
-            $charSubJob[$i] = $charStatsRow['sjob'];
-            $charSubLevel[$i] = $charStatsRow['slvl'];
-            $charFlag[$i] = $charStatsRow['nameflags'];
-        }
-        $getZoneSettings = $conn->query("SELECT name FROM zone_settings WHERE zoneid = '$charZoneId[$i]'");
-        while ($zoneSettingsRow = $getZoneSettings->fetch())
-        {
-            $charZoneName[$i] = str_replace("_", " ", $zoneSettingsRow['name']);
-        }
+        $charName[$i] = $accountsSessionsRow['charname'];
+        $charNation[$i] = $accountsSessionsRow['nation'];
+        $charMainJob[$i] = $accountsSessionsRow['mjob'];
+        $charMainLevel[$i] = $accountsSessionsRow['mlvl'];
+        $charSubJob[$i] = $accountsSessionsRow['sjob'];
+        $charSubLevel[$i] = $accountsSessionsRow['slvl'];
+        $charZoneName[$i] = str_replace("_", " ", $accountsSessionsRow['zonename']);
+        $charFlag[$i] = $accountsSessionsRow['nameflags'];
         $i = $i + 1;
     }
 }
