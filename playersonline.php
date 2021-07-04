@@ -57,7 +57,7 @@ $charMainLevel = array();
 $charSubJob = array();
 $charSubLevel = array();
 $charZoneName = array();
-$charFlag = array();
+$charAnon = array();
 
 // Data for Online Table
 try {
@@ -65,7 +65,16 @@ try {
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $getAccountsSessions  = $conn->query('
-        SELECT c.charid, c.charname, c.nation, z.name zonename, s.mjob, s.mlvl, s.sjob, s.slvl, s.nameflags
+        SELECT
+	    c.charid,
+            c.charname,
+            c.nation,
+            REPLACE(z.name, "_", " ") zonename,
+            s.mjob,
+            s.mlvl,
+            s.sjob,
+            s.slvl,
+            s.nameflags & ' . $flagID["FLAG_ANON"] . ' anonflag
         FROM chars c
         LEFT JOIN zone_settings z ON z.zoneid = c.pos_zone
         INNER JOIN char_stats s ON s.charid = c.charid
@@ -80,8 +89,8 @@ try {
         $charMainLevel[$i] = $accountsSessionsRow['mlvl'];
         $charSubJob[$i] = $accountsSessionsRow['sjob'];
         $charSubLevel[$i] = $accountsSessionsRow['slvl'];
-        $charZoneName[$i] = str_replace("_", " ", $accountsSessionsRow['zonename']);
-        $charFlag[$i] = $accountsSessionsRow['nameflags'];
+        $charZoneName[$i] = $accountsSessionsRow['zonename'];
+        $charAnon[$i] = $accountsSessionsRow['anonflag'];
         $i = $i + 1;
     }
 }
@@ -106,7 +115,7 @@ for ($x = 0; $x < $i ; $x+=1)
 {
     $mainJob = $jobID[$charMainJob[$x]];
     $subJob = $jobID[$charSubJob[$x]];
-    if ($flagID["FLAG_ANON"] != ($flagID["FLAG_ANON"] & $charFlag[$x]))
+    if (! $charAnon[$x])
     {
         if ($charSubLevel[$x] != 0)
         {
@@ -115,7 +124,7 @@ for ($x = 0; $x < $i ; $x+=1)
             echo "<tr><td>$charName[$x]</td><td>$charZoneName[$x]</td><td>$charMainLevel[$x] $mainJob</td><td></td></tr>";
         }
     } else {
-        echo "<tr><td>$charName[$x]</td><td></td><td></td><td></td></tr>";
+        echo "<tr><td>$charName[$x]</td><td>*****</td><td>*****</td><td></td>*****</tr>";
     }
 }
 echo "</table></br></br>";
