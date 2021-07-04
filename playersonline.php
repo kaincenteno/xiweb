@@ -5,26 +5,48 @@ $uptime = shell_exec("ps -p $(pidof topaz_game) -o etime=");
 
 header("Refresh: 120");
 $jobID = array(
- 1 => WAR,
- 2 => MNK,
- 3 => WHM,
- 4 => BLM,
- 5 => RDM,
- 6 => THF,
- 7 => PLD,
- 8 => DRK,
- 9 => BST,
-10 => BRD,
-11 => RNG,
-12 => SAM,
-13 => NIN,
-14 => DRG,
-15 => SMN,
-16 => BLU,
-17 => COR,
-18 => PUP,
-19 => DNC,
-20 => SCH
+ 0 => "",
+ 1 => "WAR",
+ 2 => "MNK",
+ 3 => "WHM",
+ 4 => "BLM",
+ 5 => "RDM",
+ 6 => "THF",
+ 7 => "PLD",
+ 8 => "DRK",
+ 9 => "BST",
+10 => "BRD",
+11 => "RNG",
+12 => "SAM",
+13 => "NIN",
+14 => "DRG",
+15 => "SMN",
+16 => "BLU",
+17 => "COR",
+18 => "PUP",
+19 => "DNC",
+20 => "SCH",
+21 => "GEO",
+22 => "RUN"
+);
+
+$flagID = array(
+"FLAG_INEVENT"     => 2,
+"FLAG_CHOCOBO"     => 64,
+"FLAG_WALLHACK"    => 512,
+"FLAG_INVITE"      => 2048,
+"FLAG_ANON"        => 4096,
+"FLAG_UNKNOWN"     => 8192,
+"FLAG_AWAY"        => 16384,
+"FLAG_PLAYONLINE"  => 65536,
+"FLAG_LINKSHELL"   => 131072,
+"FLAG_DC"          => 262144,
+"FLAG_GM"          => 67108864,
+"FLAG_GM_SUPPORT"  => 67108864,
+"FLAG_GM_SENIOR"   => 83886080,
+"FLAG_GM_LEAD"     => 100663296,
+"FLAG_GM_PRODUCER" => 117440512,
+"FLAG_BAZAAR"      => 2147483648
 );
 
 $charId = array();
@@ -36,6 +58,7 @@ $charMainLevel = array();
 $charSubJob = array();
 $charSubLevel = array();
 $charZoneName = array();
+$charFlag = array();
 
 // Data for Online Table
 try {
@@ -61,6 +84,7 @@ try {
             $charMainLevel[$i] = $charStatsRow['mlvl'];
             $charSubJob[$i] = $charStatsRow['sjob'];
             $charSubLevel[$i] = $charStatsRow['slvl'];
+            $charFlag[$i] = $charStatsRow['nameflags'];
         }
         $getZoneSettings = $conn->query("SELECT name FROM zone_settings WHERE zoneid = '$charZoneId[$i]'");
         while ($zoneSettingsRow = $getZoneSettings->fetch())
@@ -94,9 +118,17 @@ for ($x = 0; $x < $i ; $x+=1)
     }
     $mainJob = $jobID[$charMainJob[$x]];
     $subJob = $jobID[$charSubJob[$x]];
-    echo "<tr><td>$charName[$x]</td><td>$charZoneName[$x]</td><td>$charMainLevel[$x] $mainJob</td><td>$charSubLevel[$x] $subJob</td></tr>";
-//<td>$charSubLevel[$x]  $jobID[$charSubJob[$x]]</td></tr>";
-//    echo $charName[$x] . " is @ Zone: " . $charZoneName[$x] . " as a "  .   . "/" .   . "<br>";
+    if ($flagID["FLAG_ANON"] != ($flagID["FLAG_ANON"] & $charFlag[$x]))
+    {
+        if ($charSubLevel[$x] != 0)
+        {
+            echo "<tr><td>$charName[$x]</td><td>$charZoneName[$x]</td><td>$charMainLevel[$x] $mainJob</td><td>$charSubLevel[$x] $subJob</td></tr>";
+        } else {
+            echo "<tr><td>$charName[$x]</td><td>$charZoneName[$x]</td><td>$charMainLevel[$x] $mainJob</td><td></td></tr>";
+        }
+    } else {
+        echo "<tr><td>$charName[$x]</td><td></td><td></td><td></td></tr>";
+    }
 }
 echo "</table></br></br>";
 echo "<h3>Server Last Time Restarted:</h3>";
