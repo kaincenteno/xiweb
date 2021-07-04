@@ -100,13 +100,10 @@ catch(PDOException $e)
 </head>
 
 <?php
+echo "<h3>Characters Online:</h3>";
+echo "<table class='charactersonline'><tr><th>Character Name</th><th>Zone</th><th>Main Job</th><th>Sub Job</th></tr>";
 for ($x = 0; $x < $i ; $x+=1)
 {
-    if ($x == 0)
-    {
-        echo "<h3>Characters Online:</h3>";
-        echo "<table class='charactersonline'><tr><th>Character Name</th><th>Zone</th><th>Main Job</th><th>Sub Job</th></tr>";
-    }
     $mainJob = $jobID[$charMainJob[$x]];
     $subJob = $jobID[$charSubJob[$x]];
     if ($flagID["FLAG_ANON"] != ($flagID["FLAG_ANON"] & $charFlag[$x]))
