@@ -1,7 +1,7 @@
 <?php
 include 'config/database.conf';
 
-$uptime = shell_exec("ps -p $(pidof topaz_game) -o etime=");
+$uptime = shell_exec("uptime -p | cut -c4-");
 
 header("Refresh: 120");
 $jobID = array(
@@ -129,6 +129,5 @@ for ($x = 0; $x < $i ; $x+=1)
     }
 }
 echo "</table></br></br>";
-echo "<h3>Server Last Time Restarted:</h3>";
-echo "<p>$uptime</p>";
+echo "<p>Server was last restarted $uptime ago</p>";
 ?>
