@@ -1,6 +1,8 @@
 th {
     background-color: #15B325;
     color: white;
+    position:sticky;
+    top: 0;
 }
 
 tr:nth-child(odd) {background-color: #E6E6B4;}
