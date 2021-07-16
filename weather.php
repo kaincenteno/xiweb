@@ -1,7 +1,7 @@
 <?php
 include 'config/database.conf';
 
-header("Refresh: 3426"); // One vanadiel day
+header("Refresh: 142"); // One vanadiel hour(ish)
 
 $zones = array();
 
@@ -112,8 +112,9 @@ catch(PDOException $e)
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="If you guys don't get your act together, I am ganna kick you into next watersday!">
+    <meta name="description" content="If you guys don't get your act together, I'm ganna kick you into next watersday!">
     <title>Canaria - Weather Moogle Kupo!</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
 <?php
@@ -122,10 +123,10 @@ $vanatime = VanadielClock();
 $today = WeatherCycleDay($vanatime);
 $tomorrow   = ($today + 1) % 2160;
 
-echo "<h3>Vana time is now: " . sprintf("%04d/%02d/%02d - %02d:%02d", $vanatime['year'], $vanatime['month'], $vanatime['day'], $vanatime['hour'],$vanatime['minute']) . "</h3>";
+echo "<h3>Vana'diel time is now: " . sprintf("%04d/%02d/%02d - %02d:%02d", $vanatime['year'], $vanatime['month'], $vanatime['day'], $vanatime['hour'],$vanatime['minute']) . "</h3>";
 // echo "Day in weather cycle: $today/2160. <br/>";
-echo "<h4>Weather forecast for tomorrow is as follows.</h4>";
-echo "<table class='charactersonline'><tr><th>Zone Name</th><th>Likely 50%</th><th>Chance 35%</th><th>Rarely 15%</th></tr>";
+echo "<h4>The weather forecast for tomorrow is as follows.</h4>";
+echo "<table class='weatherTable'><tr><th>Zone Name</th><th>Likely 50%</th><th>Chance 35%</th><th>Rarely 15%</th></tr>";
 
 for ($i = 0; $i < count($zones) ; $i++)
 {
