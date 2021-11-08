@@ -17,8 +17,8 @@ function create_unsold_items_table()
                 DISTINCT ib.aH,
                 REPLACE(ib.name, "_", " ") AS name,
                 ah.stack
-            FROM auction_house ah
-            INNER JOIN item_basic ib ON ah.itemid = ib.itemid
+            FROM item_basic ib
+            INNER JOIN auction_house ah ON ib.itemid = ah.itemid
             WHERE ah.buyer_name IS NULL
             ORDER BY ib.aH ASC;');
         $i = 0;
