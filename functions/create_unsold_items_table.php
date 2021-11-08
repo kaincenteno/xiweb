@@ -16,9 +16,9 @@ function create_unsold_items_table()
         $queryAH  = $conn->query('
             SELECT
 	            ib.aH,
-	            REPLACE(ib.name, "_", " ") AS 'name',
-	            COUNT(*) AS 'listings',
-	            (CASE WHEN ah.stack=1 THEN "Y" ELSE "N" END) as 'stack'
+	            REPLACE(ib.name, "_", " ") AS "name",
+	            COUNT(*) AS "listings",
+	            (CASE WHEN ah.stack=1 THEN "Y" ELSE "N" END) as "stack"
             FROM item_basic ib
             INNER JOIN 
             	auction_house ah ON ib.itemid = ah.itemid
