@@ -10,8 +10,8 @@ function VanadielClock(){
     $vanadielNow = time() - $VANA_EPOCH;
     // Total elapsed vanadiel minutes ever
     $vanaTimestamp = ($vanadielNow / 60.0 * 25) + 886 * $VANA_YEAR;
-    
-    $vDateTime = array(
+                
+    return array(
         'year'            => floor(($vanaTimestamp / $VANA_YEAR)),
         'month'           => floor((($vanaTimestamp / $VANA_MONTH) % 12) + 1),
         'day'             => floor((($vanaTimestamp / $VANA_DAY) % 30) + 1),
@@ -20,14 +20,12 @@ function VanadielClock(){
         'vana_now'        => $vanadielNow,
         'vana_timestamp'  => $vanaTimestamp,
     );
-    return $vDateTime;
 }
 
 // The count on the 2160 day cycle
 function WeatherCycleDay($vanatime)
 {
-    $today = floor($vanatime['vana_now'] / 3456) % 2160;
-    return $today;
+    return floor($vanatime['vana_now'] / 3456) % 2160;
 }
 
 function GetWeatherForDay($blob, $day)
@@ -39,12 +37,11 @@ function GetWeatherForDay($blob, $day)
         echo "Encountered non-zero padding bit. Possible encoding or DB error.";
     }
     // Decode weather blob
-    $weather = array(
+    return array(
         "rare"   => $blob[$day] & 31,
         "common" => ($blob[$day] >> 5)  & 31,
         "normal" => ($blob[$day] >> 10) & 31
     );
-    return $weather;
 }
 
 function create_weather_table() 
