@@ -85,7 +85,6 @@ function create_weather_table()
     $tomorrow   = ($today + 1) % 2160;
     
     echo "<h3>Vana'diel time is now: " . sprintf("%04d/%02d/%02d - %02d:%02d", $vanatime['year'], $vanatime['month'], $vanatime['day'], $vanatime['hour'],$vanatime['minute']) . "</h3>";
-    // echo "Day in weather cycle: $today/2160. <br/>";
     echo "<h4>The weather forecast for tomorrow is as follows.</h4>";
     echo "<table class='weatherTable'><tr><th>Zone Name</th><th>Likely 50%</th><th>Chance 35%</th><th>Rarely 15%</th></tr>";
     
