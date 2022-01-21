@@ -3,7 +3,6 @@ function VanadielClock(){
     $VANA_EPOCH     = 1009810800;
     $VANA_YEAR      = 518400;
     $VANA_MONTH     = 43200;
-    $VANA_WEEK      = 11520;
     $VANA_DAY       = 1440;
     $VANA_HOUR      = 60;
     
