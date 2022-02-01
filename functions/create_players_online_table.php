@@ -4,6 +4,7 @@ function create_players_online_table()
     include 'config/database.conf';
     include 'globals/flagID.php';
     include 'globals/jobID.php';
+    include 'globals/partyFlag.php';
     
     $charId = array();
     $charName = array();
@@ -14,6 +15,7 @@ function create_players_online_table()
     $charSubLevel = array();
     $charZoneName = array();
     $charFlags = array();
+    $charPartyFlag = array();
     
     // Information is being read from database
     try {
@@ -30,10 +32,12 @@ function create_players_online_table()
                 s.mlvl,
                 s.sjob,
                 s.slvl,
-                s.nameflags
+                s.nameflags,
+                a.partyflag
             FROM chars c
             LEFT JOIN zone_settings z ON z.zoneid = c.pos_zone
             INNER JOIN char_stats s ON s.charid = c.charid
+            LEFT JOIN accounts_parties a ON a.charid = c.charid
             WHERE c.charid = ANY(SELECT charid FROM accounts_sessions);');
         $i = 0;
         while ($accountsSessionsRow = $getAccountsSessions->fetch()){
@@ -46,6 +50,7 @@ function create_players_online_table()
             $charSubLevel[$i] = $accountsSessionsRow['slvl'];
             $charZoneName[$i] = $accountsSessionsRow['zonename'];
             $charFlags[$i] = $accountsSessionsRow['nameflags'];
+            $charPartyFlag[$i] = $accountsSessionsRow['partyflag'];
             $i = $i + 1;
         }
     }
@@ -60,13 +65,27 @@ function create_players_online_table()
         $mainJob = $jobID[$charMainJob[$x]];
         $subJob = $jobID[$charSubJob[$x]];
         if ( !($charFlags[$x] & $flagID["FLAG_ANON"])){
-            if ($charSubLevel[$x] != 0){
-                echo "<tr><td>$charName[$x]</td><td>$charZoneName[$x]</td><td>$charMainLevel[$x] $mainJob</td><td>$charSubLevel[$x] $subJob</td></tr>";
+            if ($charPartyFlag[$x] & ($partyFlag["PARTY_LEADER"] | $partyFlag["ALLIANCE_LEADER"])) {
+                if ($charSubLevel[$x] != 0) {
+                    echo "<tr><td style='color:goldenrod'>$charName[$x]</td><td>$charZoneName[$x]</td><td>$charMainLevel[$x] $mainJob</td><td>$charSubLevel[$x] $subJob</td></tr>";
+                } else {
+                    echo "<tr><td style='color:goldenrod'>$charName[$x]</td><td>$charZoneName[$x]</td><td>$charMainLevel[$x] $mainJob</td><td></td></tr>";
+                }
+            } elseif ($charPartyFlag[$x] & ($partyFlag["PARTY_FIRST"] | $partyFlag["PARTY_SECOND"] | $partyFlag["PARTY_THIRD"])){
+                if ($charSubLevel[$x] != 0){
+                    echo "<tr><td style='color:blue'>$charName[$x]</td><td>$charZoneName[$x]</td><td>$charMainLevel[$x] $mainJob</td><td>$charSubLevel[$x] $subJob</td></tr>";
+                } else {
+                    echo "<tr><td style='color:blue'>$charName[$x]</td><td>$charZoneName[$x]</td><td>$charMainLevel[$x] $mainJob</td><td></td></tr>";
+                }
             } else {
-                echo "<tr><td>$charName[$x]</td><td>$charZoneName[$x]</td><td>$charMainLevel[$x] $mainJob</td><td></td></tr>";
+                if ($charSubLevel[$x] != 0){
+                    echo "<tr><td style='color:black'>$charName[$x]</td><td>$charZoneName[$x]</td><td>$charMainLevel[$x] $mainJob</td><td>$charSubLevel[$x] $subJob</td></tr>";
+                } else {
+                    echo "<tr><td style='color:black'>$charName[$x]</td><td>$charZoneName[$x]</td><td>$charMainLevel[$x] $mainJob</td><td></td></tr>";
+                }
             }
         } else {
-            echo "<tr><td>$charName[$x]</td><td>*****</td><td>*****</td><td>*****</tr>";
+            echo "<tr><td style='color:black'>$charName[$x]</td><td>$charZoneName[$x]</td><td></td><td></tr>";
         }
     }
     echo "</table>";
