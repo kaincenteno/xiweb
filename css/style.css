@@ -1,8 +1,24 @@
-th {
+table.plaintable th {
     background-color: #15B325;
     color: white;
-    position:sticky;
+    position: sticky;
     top: 0;
 }
 
-tr:nth-child(odd) {background-color: #E6E6B4;}
+table.plaintable tr:nth-child(odd) {background-color: #E6E6B4;}
+
+table.menubar {
+	border: transparent black 1px;
+}
+
+button {
+	background-color: #15B325;
+	border-radius: 8px;
+	color: white;
+	text-align:center
+}
+button:hover {
+    background-color: #E6E6B4;
+    color: black;
+}
+

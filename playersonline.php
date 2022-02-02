@@ -1,6 +1,6 @@
 <?php
 require'functions/create_players_online_table.php';
-
+require'functions/create_menu_bar.php';
 $uptime = shell_exec("uptime -p | cut -c4-");
 header("Refresh: 120");
 ?>
@@ -14,7 +14,8 @@ header("Refresh: 120");
 </head>
 
 <body>
+	<?php create_menu_bar();?>
 	<h3>Characters Online:</h3>
-		<?php create_players_online_table();?>
+	<?php create_players_online_table();?>
 	<p>Server was last restarted <?php echo $uptime; ?> ago</p>
 </body>

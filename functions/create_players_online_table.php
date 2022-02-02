@@ -60,7 +60,7 @@ function create_players_online_table()
     }
     
     // Table is being created here
-    echo "<table class='charactersonline'><tr><th>Character Name</th><th>Zone</th><th>Main Job</th><th>Sub Job</th></tr>";
+    echo "<table class='plaintable'><tr><th>Character Name</th><th>Zone</th><th>Main Job</th><th>Sub Job</th></tr>";
     for ($x = 0; $x < $i ; $x+=1){
         $mainJob = $jobID[$charMainJob[$x]];
         $subJob = $jobID[$charSubJob[$x]];

@@ -1,3 +1,5 @@
+<?php require'functions/create_menu_bar.php'; ?>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +10,7 @@
 
 <body>
 
-<a href="https://status.catsangel.com">Server Status</a> |
-<a href="./playersonline.php">Players Currently Online</a> |
-<a href="./weather.php">Weather Forecast</a> |
-<a href="./auctionhouse.php">Auction House</a>
+<?php create_menu_bar(); ?>
 
 <h1>Welcome to xiweb</h1>
 

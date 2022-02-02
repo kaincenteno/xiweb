@@ -39,7 +39,7 @@ function create_unsold_items_table()
     }
     
     // Table is being created here
-    echo "<table class='unsoldtable'><tr><th>Category</th><th>Name</th><th># Listings</th><th>Is a stack?</th></tr>";
+    echo "<table class='plaintable'><tr><th>Category</th><th>Name</th><th># Listings</th><th>Is a stack?</th></tr>";
     for ($x = 0; $x < $i ; $x+=1){
         echo "<tr><td>" . $ahID[$aH[$x]] . "</td><td>$name[$x]</td><td>$listings[$x]</td><td>$stack[$x]</td></tr>";
     }

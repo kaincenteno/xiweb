@@ -86,7 +86,7 @@ function create_weather_table()
     
     echo "<h3>Vana'diel time is now: " . sprintf("%04d/%02d/%02d - %02d:%02d", $vanatime['year'], $vanatime['month'], $vanatime['day'], $vanatime['hour'],$vanatime['minute']) . "</h3>";
     echo "<h4>The weather forecast for tomorrow is as follows.</h4>";
-    echo "<table class='weatherTable'><tr><th>Zone Name</th><th>Likely 50%</th><th>Chance 35%</th><th>Rarely 15%</th></tr>";
+    echo "<table class='plaintable'><tr><th>Zone Name</th><th>Likely 50%</th><th>Chance 35%</th><th>Rarely 15%</th></tr>";
     
     for ($i = 0; $i < count($zones) ; $i++){
         $zone = $zones[$i];

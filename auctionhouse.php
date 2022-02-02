@@ -1,4 +1,7 @@
-<?php require'functions/create_unsold_items_table.php';?>
+<?php
+require'functions/create_unsold_items_table.php';
+require'functions/create_menu_bar.php';
+?>
 
 <head>
     <meta charset="utf-8">
@@ -9,6 +12,7 @@
 </head>
 
 <body>
-<h1> Items in Auction House</h1>
-<?php create_unsold_items_table();?>
+	<?php create_menu_bar();?>
+    <h1> Items in Auction House</h1>
+    <?php create_unsold_items_table();?>
 </body>
