@@ -1,0 +1,5 @@
+services:
+  xiweb:
+    build: .
+    ports:
+      - 80:80
