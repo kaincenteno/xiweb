@@ -2,4 +2,10 @@ services:
   xiweb:
     build: .
     ports:
-      - 80:80
+      - 8081:80
+
+# Uncomment below if using a reverseproxy docker network
+# networks:
+#  default:
+#    external:
+#      name: reverseproxy
