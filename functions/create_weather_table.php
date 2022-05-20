@@ -14,8 +14,8 @@ function VanadielClock(){
         'year'            => (int)($vanaTimestamp / $VANA_YEAR),
         'month'           => ((int)($vanaTimestamp / $VANA_MONTH) % 12) + 1,
         'day'             => ((int)($vanaTimestamp / $VANA_DAY) % 30) + 1,
-        'hour'            => (int)(((int)$vanaTimestamp % (int)$VANA_DAY) / $VANA_HOUR),
-        'minute'          => (int)((int)$vanaTimestamp % (int)$VANA_HOUR),
+        'hour'            => (int)(((int)$vanaTimestamp % $VANA_DAY) / $VANA_HOUR),
+        'minute'          => (int)$vanaTimestamp % $VANA_HOUR,
         'vana_now'        => $vanadielNow,
         'vana_timestamp'  => $vanaTimestamp,
     );
