@@ -11,11 +11,11 @@ function VanadielClock(){
     $vanaTimestamp = ($vanadielNow / 60.0 * 25) + 886 * $VANA_YEAR;
                 
     return array(
-        'year'            => floor(($vanaTimestamp / $VANA_YEAR)),
-        'month'           => floor((($vanaTimestamp / $VANA_MONTH) % 12) + 1),
-        'day'             => floor((($vanaTimestamp / $VANA_DAY) % 30) + 1),
-        'hour'            => floor((($vanaTimestamp % $VANA_DAY) / $VANA_HOUR)),
-        'minute'          => floor(($vanaTimestamp % $VANA_HOUR)),
+        'year'            => (int) ($vanaTimestamp / $VANA_YEAR),
+        'month'           => (int) ((($vanaTimestamp / $VANA_MONTH) % 12) + 1),
+        'day'             => (int) ((($vanaTimestamp / $VANA_DAY) % 30) + 1),
+        'hour'            => (int) (($vanaTimestamp % $VANA_DAY) / $VANA_HOUR),
+        'minute'          => (int) ($vanaTimestamp % $VANA_HOUR),
         'vana_now'        => $vanadielNow,
         'vana_timestamp'  => $vanaTimestamp,
     );
