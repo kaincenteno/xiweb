@@ -44,6 +44,7 @@ $ahID = array(
     42 => "Bonecraft",
     43 => "Woodworking",
     44 => "Alchemy",
+    45 => "Geomancy",
     46 => "Misc.",
     47 => "Fishing Gear",
     48 => "Pet Items",
