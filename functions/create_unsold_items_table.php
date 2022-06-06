@@ -15,6 +15,7 @@ function create_unsold_items_table()
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $queryAH  = $conn->query('
             SELECT
+                ib.itemid,
 	            ib.aH,
 	            REPLACE(ib.name, "_", " ") AS "name",
 	            COUNT(*) AS "listings",
@@ -27,11 +28,15 @@ function create_unsold_items_table()
             ORDER BY ib.aH ASC, ib.itemId;');
         $i = 0;
         while ($row = $queryAH->fetch()){
-            $aH[$i] = $row["aH"];
-            $name[$i] = $row["name"];
-            $stack[$i] = $row["stack"];
-            $listings[$i] = $row["listings"];
-            $i = $i + 1;
+            if ($row["aH"] == 0) {
+                error_log("Item {$row["name"]} (itemid {$row["itemid"]}) doesnt have a valid category in globals/ahID.php", 0);
+            } else {
+                $aH[$i] = $row["aH"];
+                $name[$i] = $row["name"];
+                $stack[$i] = $row["stack"];
+                $listings[$i] = $row["listings"];
+                $i = $i + 1;
+            }
         }
     }
     catch(PDOException $e){
