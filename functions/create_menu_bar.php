@@ -6,6 +6,7 @@ function create_menu_bar(){
     echo '<td><button onClick="location.href=\'./playersonline.php\'" type="button">Players Currently Online</button></td>';
     echo '<td><button onClick="location.href=\'./weather.php\'" type="button">Weather Forecast</button></td>';
     echo '<td><button onClick="location.href=\'./auctionhouse.php\'" type="button">Auction House</button></td>';
+    echo '<td><button onClick="location.href=\'./item_drop.php\'" type="button">Item Drop</button></td>';
     echo '</tr></table>';
 }
 ?>
