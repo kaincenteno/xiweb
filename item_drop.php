@@ -72,6 +72,7 @@ require'functions/create_menu_bar.php';
 
             // create table node
             table = document.createElement('table')
+            table.classList.add('plaintable')
             
             // create table header node
             thead = document.createElement('thead')
@@ -120,6 +121,7 @@ require'functions/create_menu_bar.php';
             table.appendChild(tbody)
 
             // Inserts table inside the div
+            document.getElementById('result').innerHTML = '';
             document.getElementById('result').appendChild(table)
         }
     </script>
