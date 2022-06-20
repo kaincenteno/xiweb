@@ -33,7 +33,7 @@ it will contain new art.</p>
 which hasn't been configured fully yet. You can access it just by going to <a href="https://rocketchat.catsangel.com">
 rocketchat.catsangel.com</a> using a browser or the phone/desktop app.</p>
 
-<h4>What are the server rules?</h4>
+<h4>What are the server/discord/rocketchat rules?</h4>
 	<ul>
 		<li>Don't be mean to people (discriminate, etc).</li>
 		<li>Don't exploit the game.</li>
@@ -48,6 +48,7 @@ rocketchat.catsangel.com</a> using a browser or the phone/desktop app.</p>
 		<li>Trusts are enabled</li>
 		<li>All quality of life updates (Book/Crystal teleport, Field/Ground of Valor, Records of Eminence)</li>
 		<li>Content is not locked, you can access all missions/expansions, as long as they have been scripted</li>
+                <li><strong>NOTE:</strong>All of the above four items require them being unlocked thru completion of their relevant retails quests.</li> 
 	</ul>
 
 <h4>How can I contribute to the project?</h4>
