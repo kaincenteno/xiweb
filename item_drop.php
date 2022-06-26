@@ -101,11 +101,18 @@ require'functions/query_item_drop.php';
             table.appendChild(tbody)
 
             // Inserts table inside the div
-            document.getElementById('result').innerHTML = '';
+            document.getElementById('result').innerHTML = ''
             document.getElementById('result').appendChild(table)
         }
         
         document.getElementById('searchButton').addEventListener('click', itemSearch)
+        document.getElementById('itemField').addEventListener('keyup', function(event) {
+            if (event.code === 'Enter') {
+                event.preventDefault()
+                itemSearch()
+            }
+        })
+
     </script>
 
     <input type='text' id='itemField' value=''>
