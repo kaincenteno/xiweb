@@ -20,7 +20,7 @@ try {
         login,
         password
     FROM accounts
-    WHERE (login = :username AND password = (SELECT PASSWORD(:password)))');
+    WHERE (login = :username AND password = PASSWORD(:password))');
     $sth->bindParam(':username', $username, PDO::PARAM_STR);
     $sth->bindParam(':password', $password, PDO::PARAM_STR);
 
