@@ -1,4 +1,5 @@
 <?php require'functions/create_menu_bar.php'; ?>
+<script async type="text/javascript" src="script/index.js"></script>
 
 <head>
     <meta charset="utf-8">
@@ -12,46 +13,26 @@
 
 <?php create_menu_bar(); ?>
 
-<h1>Welcome to xiweb</h1>
+<h1>WELCOME TO XIWEB</h1>
 
-<h4>What is xiweb?</h4>
+<div class="about-us">
+<h4>ABOUT US</h4>
 	<p>xiweb is a website to show stats from a landsandboat server, which is a ffxi emulator.</p>
+</div>
 
-<h4>Why is the website ugly? What happened to Canaria?</h4>
-	<p>The Canaria server is still alive but we have rebranded as xiweb to promote xiweb, you can download this tool onto your own
-server to see stats from your database. The website has been cleaned of all images to make it AGPL friendly, hopefully soon
-it will contain new art.</p>
-
-<h4>Can I still connect to topaz.catsangel.com?</h4>
-	<p>Yes :D, but will recommend to use the new server address xiweb.catsangel.com as will be phasing out the old subdomain.</p>
-
-<h4>Where can I find steps on how to setup my client to populate the database?</h4>
+<h4>CLIENT SETUP</h4>
 	<p>Please visit <a href="https://wiki.catsangel.com">Our Wiki</a> to find how to install your client.</p>
 
-<h4>Is here a discord server?</h4>
-	<p>Yes, you can access it <a href="https://discord.gg/77j69vffNM">here</a>. I just recently opened up a rocket chat server,
-which hasn't been configured fully yet. You can access it just by going to <a href="https://rocketchat.catsangel.com">
-rocketchat.catsangel.com</a> using a browser or the phone/desktop app.</p>
+<h4>DISCORD</h4>
+	<p>You can access it <a href="https://discord.gg/77j69vffNM">here</a></p>
 
-<h4>What are the server/discord/rocketchat rules?</h4>
-	<ul>
-		<li>Don't be mean to people (discriminate, etc).</li>
-		<li>Don't exploit the game.</li>
-		<li>If you find an exploit, tell us in discord/rocketchat</li>
-		<li>You can multibox, and use addons, plugins; as long as you are not messing other people's fun.</li>
-		<li>Keep the drama away from in-game chat and/or discord/rocketchat, we are here to have fun.</li>
-	</ul>
+<div class="rules">
+</div>
 
-	<h4>What are the server settings?</h4>
-	<ul>
-		<li>No levelcap, You can level up to 99, and wear iLvl gear</li>
-		<li>Trusts are enabled</li>
-		<li>All quality of life updates (Book/Crystal teleport, Field/Ground of Valor, Records of Eminence)</li>
-		<li>Content is not locked, you can access all missions/expansions, as long as they have been scripted</li>
-                <li><strong>NOTE:</strong>All of the above four items require them being unlocked thru completion of their relevant retails quests.</li> 
-	</ul>
+<div class="server-settings">
+</div>
 
-<h4>How can I contribute to the project?</h4>
+<h4>CONTRIBUTE</h4>
 	<p>You can contribute by reporting bugs either in Discord/Rocketchat or directly into the Landsandboat github repo. You
 can also contribute by improving our wiki or website.</p>
 
