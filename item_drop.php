@@ -31,7 +31,7 @@ require'functions/query_item_drop.php';
         import DROPTYPE from './globals/DROPTYPE.js'
         import ITEMNAME from './globals/itemname.json' assert {type: 'json'}
         import ZONEID from '/globals/ZONEID.js'
-        import MOBNAME from '/globals/MOBNAME.js'
+        import MOBNAME from '/globals/mobname.json' assert {type: 'json'}
 
         let itemId = <?php echo json_encode($item_id); ?>;
         let dropType = <?php echo json_encode($drop_type); ?>;
