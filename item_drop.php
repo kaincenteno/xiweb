@@ -29,10 +29,10 @@ require'functions/query_item_drop.php';
 
     <script type='module'>
         import DROPTYPE from './globals/DROPTYPE.js'
-        import ITEMNAME from './globals/ITEMNAME.js'
+        import ITEMNAME from './globals/itemname.json' assert {type: 'json'}
         import ZONEID from '/globals/ZONEID.js'
         import MOBNAME from '/globals/MOBNAME.js'
-    
+
         let itemId = <?php echo json_encode($item_id); ?>;
         let dropType = <?php echo json_encode($drop_type); ?>;
         let dropRate = <?php echo json_encode($drop_rate); ?>;
@@ -47,7 +47,7 @@ require'functions/query_item_drop.php';
             // create table node
             let table = document.createElement('table')
             table.classList.add('plaintable')
-            
+
             // create table header node
             let thead = document.createElement('thead')
 
@@ -104,7 +104,7 @@ require'functions/query_item_drop.php';
             document.getElementById('result').innerHTML = ''
             document.getElementById('result').appendChild(table)
         }
-        
+
         document.getElementById('searchButton').addEventListener('click', itemSearch)
         document.getElementById('itemField').addEventListener('keyup', function(event) {
             if (event.code === 'Enter') {
