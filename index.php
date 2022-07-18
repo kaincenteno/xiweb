@@ -17,7 +17,7 @@
 
 <div class="about-us">
 <h4>ABOUT US</h4>
-	<p>xiweb is a website to show stats from a landsandboat server, which is a ffxi emulator.</p>
+	<p>xiweb is a website to show stats from a LandSandBoat server, which is an FFXI emulator.</p>
 </div>
 
 <h4>CLIENT SETUP</h4>
