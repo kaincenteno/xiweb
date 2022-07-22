@@ -1,9 +1,7 @@
 <!DOCTYPE php>
 <html lang="en">
-<?php
-require'functions/create_menu_bar.php';
-require'functions/query_item_drop.php';
-?>
+<?php require'functions/query_item_drop.php'; ?>
+<script async type="text/javascript" src="script/menu.js"></script>
 
 <head>
     <meta charset="utf-8">
@@ -14,18 +12,9 @@ require'functions/query_item_drop.php';
 </head>
 
 <body>
-
-	<?php create_menu_bar();?>
+    <div class='menu'></div>
     <h1>List of items dropped by mobs</h1>
     <p>Enter at least four letters of the item you are searching for</p>
-    <?php
-        $returnArray = query_item_drop();
-        $item_id = $returnArray[0];
-        $drop_type = $returnArray[1];
-        $drop_rate  = $returnArray[2];
-        $pool_id = $returnArray[3];
-        $zone_name = $returnArray[4];
-    ?>
 
     <script type='module'>
         import DROPTYPE from './globals/DROPTYPE.js'
@@ -33,16 +22,10 @@ require'functions/query_item_drop.php';
         import ZONEID from '/globals/zoneid.json' assert {type: 'json'}
         import MOBNAME from '/globals/mobname.json' assert {type: 'json'}
 
-        let itemId = <?php echo json_encode($item_id); ?>;
-        let dropType = <?php echo json_encode($drop_type); ?>;
-        let dropRate = <?php echo json_encode($drop_rate); ?>;
-        let poolId = <?php echo json_encode($pool_id); ?>;
-        let zoneName = <?php echo json_encode($zone_name); ?>;
+        let [itemId, dropType, dropRate, poolId, zoneName] = <?php echo json_encode(query_item_drop()); ?>
 
         function itemSearch() {
-            let fieldQuery = document.getElementById('itemField').value;
-            console.log(fieldQuery)
-
+            let fieldQuery = document.getElementById('itemField').value
 
             // create table node
             let table = document.createElement('table')
