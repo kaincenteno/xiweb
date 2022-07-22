@@ -1,6 +1,4 @@
-<?php
-require'functions/create_menu_bar.php';
-?>
+<script async type="text/javascript" src="script/menu.js"></script>
 
 <head>
     <meta charset="utf-8">
@@ -11,7 +9,7 @@ require'functions/create_menu_bar.php';
 </head>
 
 <body>
-	<?php create_menu_bar();?>
+    <div class='menu'></div>
 
     <h1>My Account</h1>
     <p>Enter your credentials to log in</p>

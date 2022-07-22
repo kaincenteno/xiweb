@@ -1,8 +1,8 @@
 <?php
 require 'functions/create_weather_table.php';
-require'functions/create_menu_bar.php';
 header("Refresh: 142"); // One vanadiel hour(ish)
 ?>
+<script async type="text/javascript" src="script/menu.js"></script>
 
 <head>
     <meta charset="utf-8">
@@ -13,6 +13,6 @@ header("Refresh: 142"); // One vanadiel hour(ish)
 </head>
 
 <body>
-	<?php create_menu_bar();?>
+    <div class='menu'></div>
 	<?php create_weather_table();?>
 </body>

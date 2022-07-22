@@ -1,7 +1,5 @@
-<?php
-require'functions/query_auction_house.php';
-require'functions/create_menu_bar.php';
-?>
+<?php require'functions/query_auction_house.php'; ?>
+<script async type="text/javascript" src="script/menu.js"></script>
 
 <head>
     <meta charset="utf-8">
@@ -12,7 +10,7 @@ require'functions/create_menu_bar.php';
 </head>
 
 <body>
-	<?php create_menu_bar();?>
+    <div class='menu'></div>
     <h1> Items in Auction House</h1>
     <p>Enter at least four letters of the item you are searching for</p>
     <?php
