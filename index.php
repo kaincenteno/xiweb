@@ -1,4 +1,4 @@
-<?php require'functions/create_menu_bar.php'; ?>
+<script async type="text/javascript" src="script/menu.js"></script>
 <script async type="text/javascript" src="script/index.js"></script>
 
 <head>
