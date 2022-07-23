@@ -1,7 +1,7 @@
 function createRulesInfo() {
-    var div = document.querySelector('.rules')
-    var h4 = document.createElement('h4')
-    var ul = document.createElement("ul")
+    let div = document.querySelector('.rules')
+    let h4 = document.createElement('h4')
+    let ul = document.createElement("ul")
 
     h4.innerHTML = "THE RULES"
     const rules = [
@@ -15,16 +15,16 @@ function createRulesInfo() {
     div.appendChild(h4)
     div.appendChild(ul)
     rules.forEach((rule) => {
-        var li = document.createElement("li")
+        let li = document.createElement("li")
         li.innerHTML = rule
         ul.appendChild(li)
     })
 }
 
 function createServerInfo() {
-    var div = document.querySelector(".server-settings")
-    var h4 = document.createElement('h4')
-    var ul = document.createElement("ul")
+    let div = document.querySelector(".server-settings")
+    let h4 = document.createElement('h4')
+    let ul = document.createElement("ul")
 
     h4.innerHTML = "SERVER SETTINGS"
     const settingsList = [
@@ -38,7 +38,7 @@ function createServerInfo() {
     div.appendChild(h4)
     div.appendChild(ul)
     settingsList.forEach((setting) => {
-        var li = document.createElement("li")
+        let li = document.createElement("li")
         li.innerHTML = setting
         ul.appendChild(li)
     })
