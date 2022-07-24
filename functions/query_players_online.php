@@ -3,16 +3,7 @@ function query_players_online()
 {
     include 'config/database.conf';
     
-    $charId = array();
-    $charName = array();
-    $charNation = array();
-    $charMainJob = array();
-    $charMainLevel = array();
-    $charSubJob = array();
-    $charSubLevel = array();
-    $charZoneName = array();
-    $charFlags = array();
-    $charPartyFlag = array();
+    $playersOnline = array();
     
     // Information is being read from database
     try {
@@ -38,20 +29,23 @@ function query_players_online()
             WHERE c.charid = ANY(SELECT charid FROM accounts_sessions);');
         $i = 0;
         while ($accountsSessionsRow = $getAccountsSessions->fetch()){
-            $charId[$i] = $accountsSessionsRow['charid'];
-            $charName[$i] = $accountsSessionsRow['charname'];
-            $charNation[$i] = $accountsSessionsRow['nation'];
-            $charMainJob[$i] = $accountsSessionsRow['mjob'];
-            $charMainLevel[$i] = $accountsSessionsRow['mlvl'];
-            $charSubJob[$i] = $accountsSessionsRow['sjob'];
-            $charSubLevel[$i] = $accountsSessionsRow['slvl'];
-            $charZoneName[$i] = $accountsSessionsRow['zonename'];
-            $charFlags[$i] = $accountsSessionsRow['nameflags'];
-            $charPartyFlag[$i] = $accountsSessionsRow['partyflag'];
-            $i = $i + 1;
+            $playersOnline[$i] = array(
+                "charid" => $accountsSessionsRow['charid'],
+                "charname" => $accountsSessionsRow['charname'],
+                "nation" => $accountsSessionsRow['nation'],
+                "mjob" => $accountsSessionsRow['mjob'],
+                "mlvl" => $accountsSessionsRow['mlvl'],
+                "sjob" => $accountsSessionsRow['sjob'],
+                "slvl" => $accountsSessionsRow['slvl'],
+                "zonename" => $accountsSessionsRow['zonename'],
+                "nameflags" => $accountsSessionsRow['nameflags'],
+                "partyflags" => $accountsSessionsRow['partyflag'],
+            );
+
+            $i += 1;
         }
 
-        return array($charId, $charName, $charNation, $charMainJob, $charMainLevel, $charSubJob, $charSubLevel, $charZoneName, $charFlags, $charPartyFlag);
+        return $playersOnline;
     }
     
     catch(PDOException $e){

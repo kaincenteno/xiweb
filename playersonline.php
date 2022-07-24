@@ -19,7 +19,7 @@ header("Refresh: 120");
     <script type='module'>
         import JOB from './globals/job.json' assert {type: 'json'}
 
-        let [charId, charName, charNation, charMainJob, charMainLevel, charSubJob, charSubLevel, charZoneName, charFlags, charPartyFlag] = <?php echo json_encode(query_players_online()); ?>
+        let playersOnline = <?php echo json_encode(query_players_online()); ?>
 
             let div = document.querySelector(".players_table")
 
@@ -51,15 +51,15 @@ header("Refresh: 120");
             let tbody = document.createElement('tbody')
 
             // Creating Content Rows
-            for (let i = 0; i < charId.length; i++) {
+            for (let i = 0; i < playersOnline.length; i++) {
                 let tdata1 = document.createElement('td')
                 let tdata2 = document.createElement('td')
                 let tdata3 = document.createElement('td')
                 let tdata4 = document.createElement('td')
-                tdata1.innerHTML = charName[i]
-                tdata2.innerHTML = charMainLevel[i] + " " + JOB[charMainJob[i]]
-                tdata3.innerHTML = charSubLevel[i] + " " + JOB[charSubJob[i]]
-                tdata4.innerHTML = charZoneName[i]
+                tdata1.innerHTML = playersOnline[i]['charname']
+                tdata2.innerHTML = playersOnline[i]['mlvl'] + " " + JOB[playersOnline[i]['mjob']]
+                tdata3.innerHTML = playersOnline[i]['slvl'] + " " + JOB[playersOnline[i]['sjob']]
+                tdata4.innerHTML = playersOnline[i]['zonename']
                 let row2 = document.createElement('tr')
                 row2.appendChild(tdata1)
                 row2.appendChild(tdata2)
