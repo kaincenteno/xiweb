@@ -43,7 +43,7 @@ try {
         echo "<h1>" . $_SESSION['username'] . "</h1>";
         echo "<br>";
         foreach ($account as $char) {
-            echo "Well-met " . $char['charname'];
+            echo "<p>Well-met " . $char['charname'] . "</p>";
         }
         echo "<br>";
         echo "<p>This is still under construction, but it worked!</p>";
