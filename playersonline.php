@@ -18,7 +18,7 @@ header("Refresh: 120");
 
     <script type='module'>
         //import JOB from './globals/job.json' assert {type: 'json'}
-        fetch('./globals/job.json')
+        const jobRequest = new Request('./globals/job.json');
 
         let playersOnline = <?php echo json_encode(query_players_online()); ?>
 
