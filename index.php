@@ -10,6 +10,7 @@
     <meta name="description" content="xiweb is a website for displaying information from a landsandboat server">
     <title>Welcome to xiweb</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
+	<link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
 </head>
 
 <body>

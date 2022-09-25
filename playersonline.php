@@ -10,8 +10,9 @@ header("Refresh: 120");
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Shows information of players currently online">
-    <title>Canaria - Players Online</title>
+    <title>xiweb - Players Online</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
 </head>
 
 <body>

@@ -8,6 +8,7 @@
     <meta name="description" content="xiweb My Account">
     <title>xiweb - My Account</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
 </head>
 
 <body>
