@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <script async type="text/javascript" src="script/menu.js"></script>
 
 <head>
