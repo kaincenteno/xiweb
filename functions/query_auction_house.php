@@ -1,14 +1,12 @@
 <?php 
-function create_unsold_items_table() 
-{
+function query_auction_house(){
     require 'config/database.conf';
-    require 'globals/ahID.php';
     
-    $aH = array();
+    $category = array();
     $name = array();
     $stack = array();
     $listings = array();
-    
+
     try {
         $conn = new PDO("mysql:host=$dbServer;dbname=$dbName", $dbUser, $dbPass);
         // set the PDO error mode to exception
@@ -31,23 +29,18 @@ function create_unsold_items_table()
             if ($row["aH"] == 0) {
                 error_log("Item {$row["name"]} (itemid {$row["itemid"]}) doesnt have a valid category in globals/ahID.php", 0);
             } else {
-                $aH[$i] = $row["aH"];
+                $category[$i] = $row["aH"];
                 $name[$i] = $row["name"];
                 $stack[$i] = $row["stack"];
                 $listings[$i] = $row["listings"];
                 $i = $i + 1;
             }
         }
+
+        return array($category, $name, $stack, $listings);
     }
     catch(PDOException $e){
         echo "Connection failed: " . $e->getMessage();
     }
-    
-    // Table is being created here
-    echo "<table class='plaintable'><tr><th>Category</th><th>Name</th><th># Listings</th><th>Is a stack?</th></tr>";
-    for ($x = 0; $x < $i ; $x+=1){
-        echo "<tr><td>" . $ahID[$aH[$x]] . "</td><td>$name[$x]</td><td>$listings[$x]</td><td>$stack[$x]</td></tr>";
-    }
-    echo "</table>";
 }
 ?>
