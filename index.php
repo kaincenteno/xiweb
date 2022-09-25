@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <?php require'functions/create_menu_bar.php'; ?>
 
 <head>
