@@ -36,14 +36,22 @@
 	<div class="server-settings">
 	</div>
 
-	<h4>CONTRIBUTE</h4>
-		<p>You can contribute by reporting bugs either in Discord/Rocketchat or directly into the Landsandboat github repo. You
-	can also contribute by improving our wiki or website.</p>
+	<h4>CONTRIBUTE TO XIWEB</h4>
+		<p>You are more than welcome to submit a PR or bug report about typos or new features. This is a hobby
+			project for myself, I am not really good at it but I am more than happy to improve it.
+		</p>
+		<ul>
+			<li><a href="https://github.com/kaincenteno/xiweb">xiweb Github</a></li>
+			<li><a href="https://github.com/kaincenteno/wiki">wiki Github</a>
+		</ul>
 
-	<ul>
-		<li><a href="https://github.com/LandSandBoat/server">LandSandBoat Server Github</a></li>
-		<li><a href="https://github.com/kaincenteno/xiweb">xiweb Github</a></li>
-		<li><a href="https://github.com/kaincenteno/wiki">wiki Github</a>
-	</ul>
+	<h4>CONTRIBUTE UPSTREAM(LANDSANDBOAT REPO)</h4>
+		<p>Upstream has high standards on the code being merged. PLEASE PLEASE PLEASE, check past PRs and read their
+			guidelines before submitting any work. We do not want anyone's feelings hurt, and/or their time wasted.
+		</p>
+
+		<ul>
+			<li><a href="https://github.com/LandSandBoat/server">LandSandBoat Server Github</a></li>
+		</ul>
 
 </body>
