@@ -13,6 +13,7 @@
 </head>
 
 <body>
+  <div class="content">
     <div class='menu'></div>
     <h1>List of items dropped by mobs</h1>
     <p>Enter at least four letters of the item you are searching for</p>
@@ -103,4 +104,5 @@
     <button id='searchButton'>Search</button>
 
     <div id='result'></div>
+  </div>
 </body>

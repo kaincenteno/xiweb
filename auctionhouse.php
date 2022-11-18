@@ -4,25 +4,26 @@
 <script async type="text/javascript" src="script/menu.js"></script>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="xiweb Auction House">
-    <title>xiweb - Auction House</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="xiweb Auction House">
+  <title>xiweb - Auction House</title>
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
 </head>
 
 <body>
-    <div class='menu'></div>
-    <h1> Items in Auction House</h1>
-    <p>Enter at least four letters of the item you are searching for</p>
-    <?php
-        $returnArray = query_auction_house();
-        $category = $returnArray[0];
-        $name = $returnArray[1];
-        $stack  = $returnArray[2];
-        $listings = $returnArray[3];
-    ?>
+<div class="content">
+  <div class='menu'></div>
+  <h1> Items in Auction House</h1>
+  <p>Enter at least four letters of the item you are searching for</p>
+  <?php
+    $returnArray = query_auction_house();
+    $category = $returnArray[0];
+    $name = $returnArray[1];
+    $stack  = $returnArray[2];
+    $listings = $returnArray[3];
+  ?>
 
 <script type='module'>
         let category = <?php echo json_encode($category); ?>;
@@ -103,4 +104,5 @@
     <button id='searchButton'>Search</button>
 
     <div id='result'></div>
+  </div>
 </body>
