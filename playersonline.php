@@ -40,10 +40,10 @@ header("Refresh: 120");
         let thead3 = document.createElement('th')
         let thead4 = document.createElement('th')
         let thead5 = document.createElement('th')
-        thead1.innerHTML = 'Name'
-        thead2.innerHTML = 'Zone'
-        thead3.innerHTML = 'Main Job'
-        thead4.innerHTML = 'Sub Job'
+        thead1.innerHTML = 'Main Job'
+        thead2.innerHTML = 'Sub Job'
+        thead3.innerHTML = 'Name'
+        thead4.innerHTML = 'Zone'
         let row1 = document.createElement('tr')
         row1.appendChild(thead1)
         row1.appendChild(thead2)
@@ -64,9 +64,9 @@ header("Refresh: 120");
                     let tdata2 = document.createElement('td')
                     let tdata3 = document.createElement('td')
                     let tdata4 = document.createElement('td')
-                    tdata1.innerHTML = playersOnline[i]['charname']
-                    tdata2.innerHTML = playersOnline[i]['mlvl'] + " " + data[playersOnline[i]['mjob']]
-                    tdata3.innerHTML = playersOnline[i]['slvl'] + " " + data[playersOnline[i]['sjob']]
+                    tdata1.innerHTML = playersOnline[i]['mlvl'] + " " + data[playersOnline[i]['mjob']]
+                    tdata2.innerHTML = playersOnline[i]['slvl'] + " " + data[playersOnline[i]['sjob']]
+                    tdata3.innerHTML = playersOnline[i]['charname']
                     tdata4.innerHTML = playersOnline[i]['zonename']
                     let row2 = document.createElement('tr')
                     row2.appendChild(tdata1)
