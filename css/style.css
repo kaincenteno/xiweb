@@ -3,22 +3,29 @@ table.plaintable th {
     color: white;
     position: sticky;
     top: 0;
+    padding: 5px;
 }
 
-table.plaintable tr:nth-child(odd) {background-color: #E6E6B4;}
+table.plaintable tr:nth-child(odd) {
+    background-color: #E6E6B4;
+}
+
+table.plaintable td {
+    padding: 5px;
+}
 
 table.menubar {
-	border: transparent black 1px;
+    border: transparent black 1px;
 }
 
 button {
-	background-color: #15B325;
-	border-radius: 8px;
-	color: white;
-	text-align:center
+    background-color: #15B325;
+    border-radius: 8px;
+    color: white;
+    text-align: center
 }
+
 button:hover {
     background-color: #E6E6B4;
     color: black;
 }
-
