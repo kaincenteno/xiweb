@@ -19,7 +19,7 @@ function query_auction_house(){
 	            COUNT(*) AS "listings",
 	            (CASE WHEN ah.stack=1 THEN "Y" ELSE "N" END) as "stack"
             FROM item_basic ib
-            INNER JOIN 
+            INNER JOIN
             	auction_house ah ON ib.itemid = ah.itemid
             WHERE ah.buyer_name IS NULL
             GROUP BY ah.itemId, ah.stack
