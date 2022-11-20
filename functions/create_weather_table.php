@@ -1,4 +1,4 @@
-<?php 
+<?php
 function VanadielClock(){
     $VANA_EPOCH     = 1009810800;
     $VANA_YEAR      = 518400;
@@ -99,4 +99,3 @@ function create_weather_table()
     }
     echo "</table>";
 }
-?>

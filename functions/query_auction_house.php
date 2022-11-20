@@ -1,4 +1,4 @@
-<?php 
+<?php
 function query_auction_house(){
     require 'config/database.conf';
     
@@ -14,13 +14,13 @@ function query_auction_house(){
         $queryAH  = $conn->query('
             SELECT
                 ib.itemid,
-	            ib.aH,
-	            REPLACE(ib.name, "_", " ") AS "name",
-	            COUNT(*) AS "listings",
-	            (CASE WHEN ah.stack=1 THEN "Y" ELSE "N" END) as "stack"
+                ib.aH,
+                REPLACE(ib.name, "_", " ") AS "name",
+                COUNT(*) AS "listings",
+                (CASE WHEN ah.stack=1 THEN "Y" ELSE "N" END) as "stack"
             FROM item_basic ib
             INNER JOIN
-            	auction_house ah ON ib.itemid = ah.itemid
+                auction_house ah ON ib.itemid = ah.itemid
             WHERE ah.buyer_name IS NULL
             GROUP BY ah.itemId, ah.stack
             ORDER BY ib.aH ASC, ib.itemId;');
@@ -43,4 +43,3 @@ function query_auction_house(){
         echo "Connection failed: " . $e->getMessage();
     }
 }
-?>

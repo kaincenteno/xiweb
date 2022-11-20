@@ -1,4 +1,4 @@
-<?php 
+<?php
 $flagID = array(
     "FLAG_INEVENT"     => 2,
     "FLAG_CHOCOBO"     => 64,
@@ -17,4 +17,3 @@ $flagID = array(
     "FLAG_GM_PRODUCER" => 117440512,
     "FLAG_BAZAAR"      => 2147483648
 );
-?>

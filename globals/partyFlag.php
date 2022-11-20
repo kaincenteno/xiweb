@@ -1,4 +1,4 @@
-<?php 
+<?php
 $partyFlag = array(
     "PARTY_FIRST"      => 0,
     "PARTY_SECOND"     => 1,
@@ -8,4 +8,3 @@ $partyFlag = array(
     "PARTY_QM"         => 16,
     "PARTY_SYNC"       => 32,
 );
-?>
