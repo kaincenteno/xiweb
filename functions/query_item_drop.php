@@ -1,4 +1,4 @@
-<?php 
+<?php
 function query_item_drop(){
     require 'config/database.conf';
         
@@ -43,4 +43,3 @@ function query_item_drop(){
         echo "Connection failed: " . $e->getMessage();
     }
 }
-?>

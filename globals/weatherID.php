@@ -1,4 +1,4 @@
-<?php 
+<?php
 $weatherID = array(
     // 0   => "NONE",
     0   => "",
@@ -22,4 +22,3 @@ $weatherID = array(
     18  => "GLOOM",
     19  => "DARKNESS"
 );
-?>
