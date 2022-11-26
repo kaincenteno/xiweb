@@ -65,7 +65,11 @@ header("Refresh: 120");
             let tdata3 = document.createElement('td')
             let tdata4 = document.createElement('td')
             tdata1.innerHTML = playersOnline[i]['mlvl'] + " " + data[playersOnline[i]['mjob']]
-            tdata2.innerHTML = playersOnline[i]['slvl'] + " " + data[playersOnline[i]['sjob']]
+            if (playersOnline[i]['slvl'] == 0) {
+              tdata2.innerHTML = ''
+            } else {
+              tdata2.innerHTML = playersOnline[i]['slvl'] + " " + data[playersOnline[i]['sjob']]
+            }
             tdata3.innerHTML = playersOnline[i]['charname']
             tdata4.innerHTML = playersOnline[i]['zonename']
             let row2 = document.createElement('tr')
