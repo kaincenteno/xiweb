@@ -46,10 +46,7 @@ function query_players_online()
         }
 
         return $playersOnline;
-    }
-    
-    catch(PDOException $e){
+    } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
 }
-?>

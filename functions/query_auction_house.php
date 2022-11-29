@@ -27,7 +27,10 @@ function query_auction_house(){
         $i = 0;
         while ($row = $queryAH->fetch()){
             if ($row["aH"] == 0) {
-                error_log("Item {$row["name"]} (itemid {$row["itemid"]}) doesnt have a valid category in globals/ahID.php", 0);
+                error_log(
+                    "Item {$row["name"]} (itemid {$row["itemid"]}) doesnt have a valid category in globals/ahID.php",
+                    0
+                );
             } else {
                 $category[$i] = $row["aH"];
                 $name[$i] = $row["name"];
@@ -38,8 +41,7 @@ function query_auction_house(){
         }
 
         return array($category, $name, $stack, $listings);
-    }
-    catch(PDOException $e){
+    } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
 }
