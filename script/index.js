@@ -32,7 +32,7 @@ function createServerInfo() {
         "Trusts are enabled",
         "All quality of life updates (Book/Crystal teleport, Field/Ground of Valor, Records of Eminence)",
         "Content is not locked, you can access all missions/expansions, as long as they have been scripted",
-        "All of the above four items require them being unlocked thru completion of their relevant retails quests.",
+        "All of the above four items require them being unlocked thru completion of their relevant retail quests.",
     ]
 
     div.appendChild(h4)
