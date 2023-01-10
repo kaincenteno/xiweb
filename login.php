@@ -21,6 +21,7 @@ try {
     SELECT
         a.login,
         a.password,
+        c.charid,
         c.charname
     FROM accounts a
     INNER JOIN
@@ -33,6 +34,7 @@ try {
     $i = 0;
     while ($result = $sth->fetch()){
         $account[$i] = array(
+            "charid" => $result['charid'],
             "charname" => $result['charname']
         );
         $i += 1;
@@ -43,7 +45,16 @@ try {
         echo "<h1>" . $_SESSION['username'] . "</h1>";
         echo "<br>";
         foreach ($account as $char) {
-            echo "<p>Well-met " . $char['charname'] . "</p>";
+            echo "<p>Well-met " . $char['charname'] . ", an Echad Ring has been sent to your delivery box.</p>";
+
+            // Give Echad Ring
+            $sth = $conn->prepare('
+            INSERT INTO xidb.delivery_box
+            (charid, charname, box, slot, itemid, itemsubid, quantity, extra, senderid, sender, received, sent)
+            VALUES(:charid, :charname, 1, (SELECT MAX(slot)+1 WHERE charid=:charid AND box=1), 27556, 0, 1, NULL, 0, \'AH-xiweb\', 0, 0);');
+            $sth->bindParam(':charname', $char['charname'], PDO::PARAM_STR);
+            $sth->bindParam(':charid', $char['charid'], PDO::PARAM_STR);
+            $sth->execute();
         }
         echo "<br>";
         echo "<p>This is still under construction, but it worked!</p>";
