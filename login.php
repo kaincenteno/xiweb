@@ -22,10 +22,12 @@ try {
         a.login,
         a.password,
         c.charid,
-        c.charname
+        c.charname,
+        cv.value AS has_echad
     FROM accounts a
     INNER JOIN
         chars c ON a.id = c.accid
+    LEFT JOIN char_vars cv ON (cv.charid = c.charid AND cv.varname = \'xiweb_echad\')
     WHERE (a.login = :username AND a.password = PASSWORD(:password))');
     $sth->bindParam(':username', $username, PDO::PARAM_STR);
     $sth->bindParam(':password', $password, PDO::PARAM_STR);
@@ -35,7 +37,8 @@ try {
     while ($result = $sth->fetch()){
         $account[$i] = array(
             "charid" => $result['charid'],
-            "charname" => $result['charname']
+            "charname" => $result['charname'],
+            "has_echad" => $result['has_echad'],
         );
         $i += 1;
     }
@@ -45,7 +48,11 @@ try {
         echo "<h1>" . $_SESSION['username'] . "</h1>";
         echo "<br>";
         foreach ($account as $char) {
-            echo "<p>Well-met " . $char['charname'] . ", an Echad Ring has been sent to your delivery box.</p>";
+
+            if ($char['has_echad']) {
+                echo "<p>Well-met " . $char['charname'] . ", You already have an Echad Ring.</p>";
+                continue;
+            }
 
             // Give Echad Ring
             $sth = $conn->prepare('
@@ -80,6 +87,23 @@ try {
             $sth->bindParam(':charname', $char['charname'], PDO::PARAM_STR);
             $sth->bindParam(':charid', $char['charid'], PDO::PARAM_STR);
             $sth->execute();
+
+            // Set charvar for item given
+            $sth = $conn->prepare('
+            INSERT INTO xidb.char_vars (
+                charid,
+                varname,
+                value
+            )
+            VALUES (
+                :charid,
+                \'xiweb_echad\',
+                1
+            );');
+            $sth->bindParam(':charid', $char['charid'], PDO::PARAM_STR);
+            $sth->execute();
+
+            echo "<p>Well-met " . $char['charname'] . ", an Echad Ring has been sent to your delivery box.</p>";
         }
         echo "<br>";
         echo "<p>This is still under construction, but it worked!</p>";
