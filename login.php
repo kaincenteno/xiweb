@@ -49,9 +49,34 @@ try {
 
             // Give Echad Ring
             $sth = $conn->prepare('
-            INSERT INTO xidb.delivery_box
-            (charid, charname, box, slot, itemid, itemsubid, quantity, extra, senderid, sender, received, sent)
-            VALUES(:charid, :charname, 1, (SELECT MAX(slot)+1 WHERE charid=:charid AND box=1), 27556, 0, 1, NULL, 0, \'AH-xiweb\', 0, 0);');
+            INSERT INTO xidb.delivery_box (
+                charid,
+                charname,
+                box,
+                slot,
+                itemid,
+                itemsubid,
+                quantity,
+                extra,
+                senderid,
+                sender,
+                received,
+                sent
+            )
+            VALUES (
+                :charid,
+                :charname,
+                1,
+                (SELECT MAX(slot)+1 WHERE charid=:charid AND box=1),
+                27556,
+                0,
+                1,
+                NULL,
+                0,
+                \'AH-xiweb\',
+                0,
+                0
+            );');
             $sth->bindParam(':charname', $char['charname'], PDO::PARAM_STR);
             $sth->bindParam(':charid', $char['charid'], PDO::PARAM_STR);
             $sth->execute();
