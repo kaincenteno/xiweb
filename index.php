@@ -17,7 +17,7 @@
   <div class="content">
     <div class='menu'></div>
 
-    <h1>WELCOME TO XIWEB</h1>
+    <h1>WELCOME TO xiweb</h1>
 
     <div class="about-us">
     <h4>ABOUT US</h4>
@@ -46,23 +46,23 @@
       </ul>
 
     <h4>FOUND A BUG IN THE GAME</h4>
-      <p>If you have found a bug in the game. We encourage you to submit it through a discussion.
+      <p>We encourage you to submit it through a discussion. If you have found a bug in the game:
       </p>
       <ul>
-        <li><a href="https://github.com/LandSandBoat/server/discussionsi">LandSandBoat Server Github Discussion</a></li>
+        <li><a href="https://github.com/LandSandBoat/server/discussions">LandSandBoat Server Github Discussion</a></li>
       </ul>
 
     <h4>RUN YOUR OWN SERVER</h4>
-      <p>You can find all the information needed to run your own private server by going to the projects
+      <p>You can find all the information needed to run your own private server by going to the project's
         github wiki. We (xiweb) do not provide support for setting up your own server.
       </p>
       <ul>
         <li><a href="https://github.com/LandSandBoat/server/wiki">LandSandBoat Server Github Wiki</a></li>
       </ul>
 
-    <h4>CONTRIBUTE UPSTREAM(LANDSANDBOAT REPO)</h4>
-      <p>Upstream has high standards on the code being merged. PLEASE PLEASE PLEASE, check past PRs and read their
-        guidelines before submitting any work. We do not want anyone's feelings hurt, and/or their time wasted.
+    <h4>CONTRIBUTE UPSTREAM (LANDSANDBOAT REPO)</h4>
+      <p>Upstream has high standards on the code being merged. PLEASE PLEASE PLEASE check past PRs and read their
+        guidelines before submitting any work. We do not want anyone's feelings hurt and/or their time wasted.
       </p>
 
       <ul>
