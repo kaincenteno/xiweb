@@ -34,3 +34,34 @@ button:hover {
     max-width: 960px;
     margin: auto;
 }
+
+@media (prefers-color-scheme: dark) {
+    table.plaintable tr:nth-child(odd) {
+        background-color: #474736;
+    }
+
+    button {
+        background-color: #094910;
+        border-radius: 8px;
+        color: white;
+        text-align: center
+    }
+
+    button:hover {
+        background-color: #474736;
+        color: white;
+    }
+
+    table.menubar {
+        border: transparent white 1px;
+    }
+
+    body {
+      color: #eee;
+      background: #121212;
+    }
+
+    a {
+      color: #809fff;
+    }
+  }
