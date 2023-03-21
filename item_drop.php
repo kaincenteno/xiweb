@@ -19,10 +19,25 @@
     <p>Enter at least four letters of the item you are searching for</p>
 
     <script type='module'>
+        let ITEMNAME
+        let ZONEID
+        let MOBNAME
         import DROPTYPE from './globals/DROPTYPE.js'
-        import ITEMNAME from './globals/itemname.json' assert {type: 'json'}
-        import ZONEID from '/globals/zoneid.json' assert {type: 'json'}
-        import MOBNAME from '/globals/mobname.json' assert {type: 'json'}
+        fetch('./globals/itemname.json')
+            .then(response => response.json())
+            .then(data => {
+                ITEMNAME = data
+            })
+        fetch('./globals/zoneid.json')
+            .then(response => response.json())
+            .then(data => {
+                ZONEID = data
+            })
+        fetch('./globals/mobname.json')
+            .then(response => response.json())
+            .then(data => {
+                MOBNAME = data
+            })
 
         let [itemId, dropType, dropRate, poolId, zoneName] = <?php echo json_encode(query_item_drop()); ?>
 

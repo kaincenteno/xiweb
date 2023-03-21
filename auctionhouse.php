@@ -26,7 +26,12 @@
   ?>
 
   <script type='module'>
-    import AH_CATEGORY from '/globals/ahID.json' assert {type: 'json'}
+  let AH_CATEGORY
+  fetch('./globals/ahID.json')
+    .then(response => response.json())
+    .then(data => {
+      AH_CATEGORY = data
+    })
 
     let category = <?php echo json_encode($category); ?>;
     let name = <?php echo json_encode($name); ?>;
