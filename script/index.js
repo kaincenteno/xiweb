@@ -1,4 +1,4 @@
-browser_language = navigator.language
+let browser_language = navigator.language
 console.log(browser_language)
 
 function createWelcome() {
