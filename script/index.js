@@ -87,22 +87,18 @@ browser_language = browser_language.slice(0, 2)
 console.log(browser_language)
 
 function createWelcome() {
-    let div = document.querySelector(".welcome")
-    let h1 = document.createElement('h1')
+    let h1 = document.querySelector(".welcome > h1")
 
     if (browser_language in information.index.welcome.h1) {
         h1.innerHTML = information.index.welcome.h1[browser_language]
     } else {
         h1.innerHTML = information.index.welcome.h1.en
     }
-
-    div.appendChild(h1)
 }
 
 function createAboutUs() {
-    let div = document.querySelector('.aboutUs')
-    let h4 = document.createElement('h4')
-    let p = document.createElement("p")
+    let h4 = document.querySelector(".aboutUs > h4")
+    let p = document.querySelector(".aboutUs > p")
 
     if (browser_language in information.index.aboutUs.h4) {
         h4.innerHTML = information.index.aboutUs.h4[browser_language]
@@ -111,15 +107,11 @@ function createAboutUs() {
         h4.innerHTML = information.index.aboutUs.h4.en
         p.innerHTML = information.index.aboutUs.p.en
     }
-
-    div.appendChild(h4)
-    div.appendChild(p)
 }
 
 function createClientSetup() {
-    let div = document.querySelector('.clientSetup')
-    let h4 = document.createElement('h4')
-    let p = document.createElement('p')
+    let h4 = document.querySelector(".clientSetup > h4")
+    let p = document.querySelector(".clientSetup > p")
 
     if (browser_language in information.index.clientSetup.h4) {
         h4.innerHTML = information.index.clientSetup.h4[browser_language]
@@ -128,15 +120,11 @@ function createClientSetup() {
         h4.innerHTML = information.index.clientSetup.h4.en
         p.innerHTML = information.index.clientSetup.p.en
     }
-
-    div.appendChild(h4)
-    div.appendChild(p)
 }
 
 function createDiscord() {
-    let div = document.querySelector('.discord')
-    let h4 = document.createElement('h4')
-    let p = document.createElement('p')
+    let h4 = document.querySelector(".discord > h4")
+    let p = document.querySelector(".discord > p")
 
     if (browser_language in information.index.discord.h4) {
         h4.innerHTML = information.index.discord.h4[browser_language]
@@ -145,15 +133,11 @@ function createDiscord() {
         h4.innerHTML = information.index.discord.h4.en
         p.innerHTML = information.index.discord.p.en
     }
-
-    div.appendChild(h4)
-    div.appendChild(p)
 }
 
 function createRulesInfo() {
-    let div = document.querySelector('.rules')
-    let h4 = document.createElement('h4')
-    let ul = document.createElement("ul")
+    let h4 = document.querySelector(".rules > h4")
+    let ul = document.querySelector(".rules > ul")
 
     if (browser_language in information.index.rules.h4) {
         h4.innerHTML = information.index.rules.h4[browser_language]
@@ -173,9 +157,6 @@ function createRulesInfo() {
             ul.appendChild(li)
         })
     }
-
-    div.appendChild(h4)
-    div.appendChild(ul)
 }
 
 function createServerInfo() {

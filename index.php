@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-<script async type="text/javascript" src="script/menu.js"></script>
-<script async type="text/javascript" src="script/index.js"></script>
-
 
 <head>
   <meta charset="utf-8">
@@ -17,15 +13,29 @@
   <div class="content">
     <div class='menu'></div>
 
-    <div class='welcome'></div>
+    <div class="welcome">
+      <h1></h1>
+    </div>
 
-    <div class="aboutUs"></div>
+    <div class="aboutUs">
+      <h4></h4>
+      <p></p>
+    </div>
 
-    <div class="clientSetup"></div>
+    <div class="clientSetup">
+      <h4></h4>
+      <p></p>
+    </div>
 
-    <div class="discord"></div>
+    <div class="discord">
+      <h4></h4>
+      <p></p>
+    </div>
 
-    <div class="rules"></div>
+    <div class="rules">
+      <h4></h4>
+      <ul></ul>
+    </div>
 
     <div class="server-settings"></div>
 
@@ -38,3 +48,6 @@
     <div class="contribute-upstream"></div>
   </div>
 </body>
+
+<script type="text/javascript" src="script/index.js"></script>
+<script type="text/javascript" src="script/menu.js"></script>
