@@ -19,9 +19,9 @@
 
     <div class='welcome'></div>
 
-    <div class="about-us"></div>
+    <div class="aboutUs"></div>
 
-    <div class="client-setup"></div>
+    <div class="clientSetup"></div>
 
     <div class="discord"></div>
 

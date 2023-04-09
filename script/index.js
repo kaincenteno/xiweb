@@ -1,59 +1,136 @@
+const information = {
+    "index": {
+        "welcome": {
+            "h1": {
+                "es": "BIENVENIDO A xiweb",
+                "zh": "欢迎来到xiweb",
+                "en": "WELCOME TO xiweb"
+            }
+        },
+        "aboutUs": {
+            "h4": {
+                "es": "SOBRE NOSOTROS",
+                "zh": "关于我们",
+                "en": "ABOUT US"
+            },
+            "p": {
+                "es": "xiweb es una pagina web para mostrar estadisticas de un servidor LandSandBoat, que es un emulador de FFXI.",
+                "zh": "xiweb是一个用来展示LandSandBoat服务器数据的网站，LandSandBoat服务器是一个FFXI模拟器。",
+                "en": "xiweb is a website to show stats from a LandSandBoat server, which is an FFXI emulator."
+            }
+        },
+        "clientSetup": {
+            "h4": {
+                "es": "CONFIGURACION DEL CLIENT",
+                "zh": "客户端配置",
+                "en": "CLIENT SETUP"
+            },
+            "p": {
+                "es": "Por favor visita <a href='https://wiki.catsangel.com'>nuestra wiki</a> para encontrar la guia en como instalar tu cliente.",
+                "zh": "关于如何创建客户端，请访问<a href='https://wiki.catsangel.com'>我们的Wiki页面</a>。",
+                "en": "Please visit <a href='https://wiki.catsangel.com'>Our Wiki</a> to find how to install your client."
+            }
+        },
+        "discord": {
+            "h4": {
+                "es": "DISCORD",
+                "zh": "DISCORD",
+                "en": "DISCORD"
+            },
+            "p": {
+                "es": "Puedes accederlo <a href='https://discord.gg/77j69vffNM'>aqui</a>.",
+                "zh": "点击<a href='https://discord.gg/77j69vffNM'>这里</a>访问。",
+                "en": "You can access it <a href='https://discord.gg/77j69vffNM'>here</a>."
+            }
+        },
+        "rules": {
+            "h4": {
+                "es": "LAS REGLAS",
+                "zh": "玩家守则",
+                "en": "THE RULES"
+            },
+            "li": [
+                {
+                    "es": "No seas malo con la gente (discriminar, etc).",
+                    "zh": "请不要骚扰其他玩家，包括并不限制与辱骂，人身攻击等。",
+                    "en": "Don't be mean to people (discriminate, etc)."
+                },
+                {
+                    "es": "No hagas beneficio de vulnerabilidades en el juego.",
+                    "zh": "请勿使用修改器等作弊软件。",
+                    "en": "Don't exploit the game."
+                },
+                {
+                    "es": "Si encuentras una vulnerabilidad, dinoslo en discord.",
+                    "zh": "如果您发现有人使用修改器等作弊软件，请在Discord通知我们。",
+                    "en": "If you find an exploit, tell us in discord."
+                },
+                {
+                    "es": "Puedes utilizar mas de un personaje a la vez, usar addons y plugins; con tal que no estes malogrando la diversion de los demas.",
+                    "zh": "在不影响他人游戏体验的条件下，你可以使用multibox, addons或者plugins。",
+                    "en": "You can multibox, and use addons, plugins; as long as you are not messing other people's fun."
+                },
+                {
+                    "es": "Mantener el drama fuera del juego y/o discord. Estamos aqui para divertirnos.",
+                    "zh": "观点不合请心平气和地讨论，请不要在Chat以及Discord吵架（喜欢吵得人请去微博或推特）。",
+                    "en": "Keep the drama away from in-game chat and/or discord. We are here to have fun."
+                }
+            ]
+        }
+    }
+}
+
+console.log(information)
+
 let browser_language = navigator.language
+browser_language = browser_language.slice(0, 2)
 console.log(browser_language)
 
 function createWelcome() {
-    let div = document.querySelector('.welcome')
+    let div = document.querySelector(".welcome")
     let h1 = document.createElement('h1')
 
-    if (browser_language.startsWith('es')) {
-        h1.innerHTML = "BIENVENIDO A xiweb"
-
-        div.appendChild(h1)
+    if (browser_language in information.index.welcome.h1) {
+        h1.innerHTML = information.index.welcome.h1[browser_language]
     } else {
-        h1.innerHTML = "WELCOME TO xiweb"
-
-        div.appendChild(h1)
+        h1.innerHTML = information.index.welcome.h1.en
     }
+
+    div.appendChild(h1)
 }
 
 function createAboutUs() {
-    let div = document.querySelector('.about-us')
+    let div = document.querySelector('.aboutUs')
     let h4 = document.createElement('h4')
     let p = document.createElement("p")
 
-    if (browser_language.startsWith('es')) {
-        h4.innerHTML = "SOBRE NOSOTROS"
-        p.innerHTML = "xiweb es una pagina web para mostrar estadisticas de un servidor LandSandBoat, que es un emulador de FFXI"
-
-        div.appendChild(h4)
-        div.appendChild(p)
+    if (browser_language in information.index.aboutUs.h4) {
+        h4.innerHTML = information.index.aboutUs.h4[browser_language]
+        p.innerHTML = information.index.aboutUs.p[browser_language]
     } else {
-        h4.innerHTML = "ABOUT US"
-        p.innerHTML = "xiweb is a website to show stats from a LandSandBoat server, which is an FFXI emulator."
-
-        div.appendChild(h4)
-        div.appendChild(p)
+        h4.innerHTML = information.index.aboutUs.h4.en
+        p.innerHTML = information.index.aboutUs.p.en
     }
+
+    div.appendChild(h4)
+    div.appendChild(p)
 }
 
 function createClientSetup() {
-    let div = document.querySelector('.client-setup')
+    let div = document.querySelector('.clientSetup')
     let h4 = document.createElement('h4')
     let p = document.createElement('p')
 
-    if (browser_language.startsWith('es')) {
-        h4.innerHTML = "CONFIGURACION DEL CLIENT"
-        p.innerHTML = "Por favor visita <a href='https://wiki.catsangel.com'>nuestra wiki</a> para encontrar la guia en como instalar tu cliente."
-
-        div.appendChild(h4)
-        div.appendChild(p)
+    if (browser_language in information.index.clientSetup.h4) {
+        h4.innerHTML = information.index.clientSetup.h4[browser_language]
+        p.innerHTML = information.index.clientSetup.p[browser_language]
     } else {
-        h4.innerHTML = "CLIENT SETUP"
-        p.innerHTML = "Please visit <a href='https://wiki.catsangel.com'>Our Wiki</a> to find how to install your client."
-
-        div.appendChild(h4)
-        div.appendChild(p)
+        h4.innerHTML = information.index.clientSetup.h4.en
+        p.innerHTML = information.index.clientSetup.p.en
     }
+
+    div.appendChild(h4)
+    div.appendChild(p)
 }
 
 function createDiscord() {
@@ -61,19 +138,16 @@ function createDiscord() {
     let h4 = document.createElement('h4')
     let p = document.createElement('p')
 
-    if (browser_language.startsWith('es')) {
-        h4.innerHTML = "DISCORD"
-        p.innerHTML = "Puedes accederlo <a href='https://discord.gg/77j69vffNM'>aqui</a>."
-
-        div.appendChild(h4)
-        div.appendChild(p)
+    if (browser_language in information.index.discord.h4) {
+        h4.innerHTML = information.index.discord.h4[browser_language]
+        p.innerHTML = information.index.discord.p[browser_language]
     } else {
-        h4.innerHTML = "DISCORD"
-        p.innerHTML = "You can access it <a href='https://discord.gg/77j69vffNM'>here</a>."
-
-        div.appendChild(h4)
-        div.appendChild(p)
+        h4.innerHTML = information.index.discord.h4.en
+        p.innerHTML = information.index.discord.p.en
     }
+
+    div.appendChild(h4)
+    div.appendChild(p)
 }
 
 function createRulesInfo() {
@@ -81,41 +155,27 @@ function createRulesInfo() {
     let h4 = document.createElement('h4')
     let ul = document.createElement("ul")
 
-    if (browser_language.startsWith('es')) {
-        h4.innerHTML = "LAS REGLAS"
-        const rules = [
-            "No seas malo con la gente (discriminar, etc).",
-            "No hagas beneficio de vulnerabilidades en el juego.",
-            "Si encuentras una vulnerabilidad, dinoslo en discord.",
-            "Puedes utilizar mas de un personaje a la vez, usar addons y plugins; con tal que no estes malogrando la diversion de los demas.",
-            "Mantener el drama fuera del juego y/o discord. Estamos aqui para divertirnos.",
-        ]
+    if (browser_language in information.index.rules.h4) {
+        h4.innerHTML = information.index.rules.h4[browser_language]
 
-        div.appendChild(h4)
-        div.appendChild(ul)
-        rules.forEach((rule) => {
+        information.index.rules.li.forEach((rule) => {
             let li = document.createElement("li")
-            li.innerHTML = rule
+            li.innerHTML = rule[browser_language]
             ul.appendChild(li)
         })
-    } else {
-        h4.innerHTML = "THE RULES"
-        const rules = [
-            "Don't be mean to people (discriminate, etc).",
-            "Don't exploit the game.",
-            "If you find an exploit, tell us in discord.",
-            "You can multibox, and use addons, plugins; as long as you are not messing other people's fun.",
-            "Keep the drama away from in-game chat and/or discord. We are here to have fun.",
-        ]
 
-        div.appendChild(h4)
-        div.appendChild(ul)
-        rules.forEach((rule) => {
+    } else {
+        h4.innerHTML = h4.innerHTML = information.index.rules.h4.en
+
+        information.index.rules.li.forEach((rule) => {
             let li = document.createElement("li")
-            li.innerHTML = rule
+            li.innerHTML = rule[browser_language]
             ul.appendChild(li)
         })
     }
+
+    div.appendChild(h4)
+    div.appendChild(ul)
 }
 
 function createServerInfo() {
