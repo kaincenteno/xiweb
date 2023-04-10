@@ -110,6 +110,30 @@ const information = {
                     "en": "All of the above four items require them being unlocked thru completion of their relevant retail quests."
                 }
             ]
+        },
+        "contribute": {
+            "h4": {
+                "es": "CONTRIBUYE A xiweb",
+                "zh": "",
+                "en": "CONTRIBUTE TO xiweb"
+            },
+            "p": {
+                "es": "Te agradecemos de antemano la entrega de PR o informe de errores o nuevas caracteristicas. Este en un proyecto de pasatiempo persona. No soy bueno en esto pero me alegraria el poder mejorarlo.",
+                "zh": "",
+                "en": "You are more than welcome to submit a PR or bug report about typos or new features. This is a hobby project for myself, I am not really good at it but I am more than happy to improve it."
+            },
+            "li": [
+                {
+                    "es": "<a href='https://github.com/kaincenteno/xiweb'>xiweb Github</a>.",
+                    "zh": "<a href='https://github.com/kaincenteno/xiweb'>xiweb Github</a>。",
+                    "en": "<a href='https://github.com/kaincenteno/xiweb'>xiweb Github</a>."
+                },
+                {
+                    "es": "<a href='https://github.com/kaincenteno/wiki'>wiki Github</a>.",
+                    "zh": "<a href='https://github.com/kaincenteno/wiki'>wiki Github</a>。",
+                    "en": "<a href='https://github.com/kaincenteno/wiki'>wiki Github</a>."
+                }
+            ]
         }
     }
 }
@@ -222,30 +246,23 @@ function createContribute() {
     let p = document.querySelector(".contribute > p")
     let ul = document.querySelector(".contribute > ul")
 
-    if (browser_language.startsWith('es')) {
-        h4.innerHTML = "CONTRIBUYE A xiweb"
-        p.innerHTML = "Te agradecemos de antemano la entrega de PR o informe de errores o nuevas caracteristicas. Este en un proyecto de pasatiempo persona. No soy bueno en esto pero me alegraria el poder mejorarlo."
-        const contributeList = [
-            "<a href='https://github.com/kaincenteno/xiweb'>xiweb Github</a>",
-            "<a href='https://github.com/kaincenteno/wiki'>wiki Github</a>",
-        ]
+    if (browser_language in information.index.contribute.h4) {
+        h4.innerHTML = information.index.contribute.h4[browser_language]
+        p.innerHTML = information.index.contribute.p[browser_language]
 
-        contributeList.forEach((setting) => {
+        information.index.contribute.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = setting
+            li.innerHTML = listItem[browser_language]
             ul.appendChild(li)
         })
-    } else {
-        h4.innerHTML = "CONTRIBUTE TO xiweb"
-        p.innerHTML = "You are more than welcome to submit a PR or bug report about typos or new features. This is a hobby project for myself, I am not really good at it but I am more than happy to improve it."
-        const contributeList = [
-            "<a href='https://github.com/kaincenteno/xiweb'>xiweb Github</a>",
-            "<a href='https://github.com/kaincenteno/wiki'>wiki Github</a>",
-        ]
 
-        contributeList.forEach((setting) => {
+    } else {
+        h4.innerHTML = information.index.contribute.h4.en
+        p.innerHTML = information.index.contribute.p.en
+
+        information.index.contribute.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = setting
+            li.innerHTML = listItem.en
             ul.appendChild(li)
         })
     }
