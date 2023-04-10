@@ -211,7 +211,7 @@ function createServerInfo() {
 
         information.index.serverSettings.li.forEach((setting) => {
             let li = document.createElement("li")
-            li.innerHTML = setting[browser_language]
+            li.innerHTML = setting.en
             ul.appendChild(li)
         })
     }
