@@ -183,11 +183,11 @@ function createRulesInfo() {
         })
 
     } else {
-        h4.innerHTML = h4.innerHTML = information.index.rules.h4.en
+        h4.innerHTML = information.index.rules.h4.en
 
         information.index.rules.li.forEach((rule) => {
             let li = document.createElement("li")
-            li.innerHTML = rule[browser_language]
+            li.innerHTML = rule.en
             ul.appendChild(li)
         })
     }
