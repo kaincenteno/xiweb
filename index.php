@@ -37,15 +37,34 @@
       <ul></ul>
     </div>
 
-    <div class="server-settings"></div>
+    <div class="serverSettings">
+      <h4></h4>
+      <ul></ul>
+    </div>
 
-    <div class="contribute"></div>
+    <div class="contribute">
+      <h4></h4>
+      <p></p>
+      <ul></ul>
+    </div>
 
-    <div class="found-bug"></div>
+    <div class="foundBug">
+      <h4></h4>
+      <p></p>
+      <ul></ul>
+    </div>
 
-    <div class="your-own-server"></div>
+    <div class="yourOwnServer">
+      <h4></h4>
+      <p></p>
+      <ul></ul>
+    </div>
 
-    <div class="contribute-upstream"></div>
+    <div class="contributeUpstream">
+      <h4></h4>
+      <p></p>
+      <ul></ul>
+    </div>
   </div>
 </body>
 

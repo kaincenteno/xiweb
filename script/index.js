@@ -160,9 +160,8 @@ function createRulesInfo() {
 }
 
 function createServerInfo() {
-    let div = document.querySelector(".server-settings")
-    let h4 = document.createElement('h4')
-    let ul = document.createElement("ul")
+    let h4 = document.querySelector(".serverSettings > h4")
+    let ul = document.querySelector(".serverSettings > ul")
 
     if (browser_language.startsWith('es')) {
         h4.innerHTML = "OPCIONES DEL SERVIDOR"
@@ -174,8 +173,6 @@ function createServerInfo() {
             "Todo lo dicho previamente require ser desbloqueado mediante la afinacion de las misiones.",
         ]
 
-        div.appendChild(h4)
-        div.appendChild(ul)
         settingsList.forEach((setting) => {
             let li = document.createElement("li")
             li.innerHTML = setting
@@ -191,8 +188,6 @@ function createServerInfo() {
             "All of the above four items require them being unlocked thru completion of their relevant retail quests.",
         ]
 
-        div.appendChild(h4)
-        div.appendChild(ul)
         settingsList.forEach((setting) => {
             let li = document.createElement("li")
             li.innerHTML = setting
@@ -202,10 +197,9 @@ function createServerInfo() {
 }
 
 function createContribute() {
-    let div = document.querySelector(".contribute")
-    let h4 = document.createElement('h4')
-    let p = document.createElement('p')
-    let ul = document.createElement("ul")
+    let h4 = document.querySelector(".contribute > h4")
+    let p = document.querySelector(".contribute > p")
+    let ul = document.querySelector(".contribute > ul")
 
     if (browser_language.startsWith('es')) {
         h4.innerHTML = "CONTRIBUYE A xiweb"
@@ -215,9 +209,6 @@ function createContribute() {
             "<a href='https://github.com/kaincenteno/wiki'>wiki Github</a>",
         ]
 
-        div.appendChild(h4)
-        div.appendChild(p)
-        div.appendChild(ul)
         contributeList.forEach((setting) => {
             let li = document.createElement("li")
             li.innerHTML = setting
@@ -231,9 +222,6 @@ function createContribute() {
             "<a href='https://github.com/kaincenteno/wiki'>wiki Github</a>",
         ]
 
-        div.appendChild(h4)
-        div.appendChild(p)
-        div.appendChild(ul)
         contributeList.forEach((setting) => {
             let li = document.createElement("li")
             li.innerHTML = setting
@@ -243,10 +231,9 @@ function createContribute() {
 }
 
 function createBug() {
-    let div = document.querySelector(".found-bug")
-    let h4 = document.createElement('h4')
-    let p = document.createElement('p')
-    let ul = document.createElement("ul")
+    let h4 = document.querySelector(".foundBug > h4")
+    let p = document.querySelector(".foundBug > p")
+    let ul = document.querySelector(".foundBug > ul")
 
     if (browser_language.startsWith('es')) {
         h4.innerHTML = "ENCONTRASTE UN ERROR EN EL JUEGO"
@@ -255,9 +242,6 @@ function createBug() {
             "<a href='https://github.com/LandSandBoat/server/discussions'>Discusion de Github del LandSandBoat Server</a>",
         ]
 
-        div.appendChild(h4)
-        div.appendChild(p)
-        div.appendChild(ul)
         bugList.forEach((setting) => {
             let li = document.createElement("li")
             li.innerHTML = setting
@@ -270,9 +254,6 @@ function createBug() {
             "<a href='https://github.com/LandSandBoat/server/discussions'>LandSandBoat Server Github Discussion</a>",
         ]
 
-        div.appendChild(h4)
-        div.appendChild(p)
-        div.appendChild(ul)
         bugList.forEach((setting) => {
             let li = document.createElement("li")
             li.innerHTML = setting
@@ -282,10 +263,10 @@ function createBug() {
 }
 
 function createYourOwnServer() {
-    let div = document.querySelector(".your-own-server")
-    let h4 = document.createElement('h4')
-    let p = document.createElement('p')
-    let ul = document.createElement("ul")
+    let h4 = document.querySelector(".yourOwnServer > h4")
+    let p = document.querySelector(".yourOwnServer > p")
+    let ul = document.querySelector(".yourOwnServer > ul")
+
 
     if (browser_language.startsWith('es')) {
         h4.innerHTML = "CREA TU PROPIO SERVIDOR"
@@ -294,9 +275,6 @@ function createYourOwnServer() {
             "<a href='https://github.com/LandSandBoat/server/wiki'>Github Wiki del LandSandBoat Server</a>",
         ]
 
-        div.appendChild(h4)
-        div.appendChild(p)
-        div.appendChild(ul)
         ownServerList.forEach((setting) => {
             let li = document.createElement("li")
             li.innerHTML = setting
@@ -309,9 +287,6 @@ function createYourOwnServer() {
             "<a href='https://github.com/LandSandBoat/server/wiki'>LandSandBoat Server Github Wiki</a>",
         ]
 
-        div.appendChild(h4)
-        div.appendChild(p)
-        div.appendChild(ul)
         ownServerList.forEach((setting) => {
             let li = document.createElement("li")
             li.innerHTML = setting
@@ -321,10 +296,9 @@ function createYourOwnServer() {
 }
 
 function createContributeUpstream() {
-    let div = document.querySelector(".contribute-upstream")
-    let h4 = document.createElement('h4')
-    let p = document.createElement('p')
-    let ul = document.createElement("ul")
+    let h4 = document.querySelector(".contributeUpstream > h4")
+    let p = document.querySelector(".contributeUpstream > p")
+    let ul = document.querySelector(".contributeUpstream > ul")
 
     if (browser_language.startsWith('es')) {
         h4.innerHTML = "CONTRIBUYE UPSTREAM (REPO LANDSANDBOAT)"
@@ -333,9 +307,6 @@ function createContributeUpstream() {
             "<a href='https://github.com/LandSandBoat/server'>Github del LandSandBoat Server</a>",
         ]
 
-        div.appendChild(h4)
-        div.appendChild(p)
-        div.appendChild(ul)
         upstreamList.forEach((setting) => {
             let li = document.createElement("li")
             li.innerHTML = setting
@@ -348,9 +319,6 @@ function createContributeUpstream() {
             "<a href='https://github.com/LandSandBoat/server'>LandSandBoat Server Github</a>",
         ]
 
-        div.appendChild(h4)
-        div.appendChild(p)
-        div.appendChild(ul)
         upstreamList.forEach((setting) => {
             let li = document.createElement("li")
             li.innerHTML = setting
