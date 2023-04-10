@@ -76,6 +76,40 @@ const information = {
                     "en": "Keep the drama away from in-game chat and/or discord. We are here to have fun."
                 }
             ]
+        },
+        "serverSettings": {
+            "h4": {
+                "es": "OPCIONES DEL SERVIDOR",
+                "zh": "",
+                "en": "SERVER SETTINGS"
+            },
+            "li": [
+                {
+                    "es": "No hay limite de nivel. Puedes subir de nivel hasta 99, y ponerte traje iLvl.",
+                    "zh": "",
+                    "en": "No levelcap, You can level up to 99, and wear iLvl gear."
+                },
+                {
+                    "es": "Trusts estan habilitados.",
+                    "zh": "",
+                    "en": "Trusts are enabled."
+                },
+                {
+                    "es": "Todas las actualizaciones de calidad de vida(Teleporte de Libro/Cristal, Field/Ground of Valor, Records of Eminence).",
+                    "zh": "",
+                    "en": "All quality of life updates (Book/Crystal teleport, Field/Ground of Valor, Records of Eminence)"
+                },
+                {
+                    "es": "El contenido no esta bloqueado. Puedes acceder todas las misiones/expansiones, con tal que esten programadas.",
+                    "zh": "",
+                    "en": "Content is not locked, you can access all missions/expansions, as long as they have been scripted"
+                },
+                {
+                    "es": "Todo lo dicho previamente require ser desbloqueado mediante la afinacion de las misiones.",
+                    "zh": "",
+                    "en": "All of the above four items require them being unlocked thru completion of their relevant retail quests."
+                }
+            ]
         }
     }
 }
@@ -163,34 +197,21 @@ function createServerInfo() {
     let h4 = document.querySelector(".serverSettings > h4")
     let ul = document.querySelector(".serverSettings > ul")
 
-    if (browser_language.startsWith('es')) {
-        h4.innerHTML = "OPCIONES DEL SERVIDOR"
-        const settingsList = [
-            "No hay limite de nivel. Puedes subir de nivel hasta 99, y ponerte traje iLvl",
-            "Trusts estan habilitados",
-            "Todas las actualizaciones de calidad de vida(Teleporte de Libro/Cristal), Field/Ground of Valor, Records of Eminence)",
-            "El contenido no esta bloqueado. Puedes acceder todas las misiones/expansiones, con tal que esten programadas.",
-            "Todo lo dicho previamente require ser desbloqueado mediante la afinacion de las misiones.",
-        ]
+    if (browser_language in information.index.serverSettings.h4) {
+        h4.innerHTML = information.index.serverSettings.h4[browser_language]
 
-        settingsList.forEach((setting) => {
+        information.index.serverSettings.li.forEach((setting) => {
             let li = document.createElement("li")
-            li.innerHTML = setting
+            li.innerHTML = setting[browser_language]
             ul.appendChild(li)
         })
-    } else {
-        h4.innerHTML = "SERVER SETTINGS"
-        const settingsList = [
-            "No levelcap, You can level up to 99, and wear iLvl gear",
-            "Trusts are enabled",
-            "All quality of life updates (Book/Crystal teleport, Field/Ground of Valor, Records of Eminence)",
-            "Content is not locked, you can access all missions/expansions, as long as they have been scripted",
-            "All of the above four items require them being unlocked thru completion of their relevant retail quests.",
-        ]
 
-        settingsList.forEach((setting) => {
+    } else {
+        h4.innerHTML = information.index.serverSettings.h4.en
+
+        information.index.serverSettings.li.forEach((setting) => {
             let li = document.createElement("li")
-            li.innerHTML = setting
+            li.innerHTML = setting[browser_language]
             ul.appendChild(li)
         })
     }
