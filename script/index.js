@@ -1,48 +1,5 @@
 const information = {
     "index": {
-        "welcome": {
-            "h1": {
-                "es": "BIENVENIDO A xiweb",
-                "zh": "欢迎来到xiweb",
-                "en": "WELCOME TO xiweb"
-            }
-        },
-        "aboutUs": {
-            "h4": {
-                "es": "SOBRE NOSOTROS",
-                "zh": "关于我们",
-                "en": "ABOUT US"
-            },
-            "p": {
-                "es": "xiweb es una pagina web para mostrar estadisticas de un servidor LandSandBoat, que es un emulador de FFXI.",
-                "zh": "xiweb是一个用来展示LandSandBoat服务器数据的网站，LandSandBoat服务器是一个FFXI模拟器。",
-                "en": "xiweb is a website to show stats from a LandSandBoat server, which is an FFXI emulator."
-            }
-        },
-        "clientSetup": {
-            "h4": {
-                "es": "CONFIGURACION DEL CLIENT",
-                "zh": "客户端配置",
-                "en": "CLIENT SETUP"
-            },
-            "p": {
-                "es": "Por favor visita <a href='https://wiki.catsangel.com'>nuestra wiki</a> para encontrar la guia en como instalar tu cliente.",
-                "zh": "关于如何创建客户端，请访问<a href='https://wiki.catsangel.com'>我们的Wiki页面</a>。",
-                "en": "Please visit <a href='https://wiki.catsangel.com'>Our Wiki</a> to find how to install your client."
-            }
-        },
-        "discord": {
-            "h4": {
-                "es": "DISCORD",
-                "zh": "DISCORD",
-                "en": "DISCORD"
-            },
-            "p": {
-                "es": "Puedes accederlo <a href='https://discord.gg/77j69vffNM'>aqui</a>.",
-                "zh": "点击<a href='https://discord.gg/77j69vffNM'>这里</a>访问。",
-                "en": "You can access it <a href='https://discord.gg/77j69vffNM'>here</a>."
-            }
-        },
         "rules": {
             "h4": {
                 "es": "LAS REGLAS",
@@ -138,78 +95,76 @@ const information = {
     }
 }
 
-console.log(information)
-
 let browser_language = navigator.language
 browser_language = browser_language.slice(0, 2)
 console.log(browser_language)
 
-function createWelcome() {
+function createWelcome(language_data) {
     let h1 = document.querySelector(".welcome > h1")
 
-    if (browser_language in information.index.welcome.h1) {
-        h1.innerHTML = information.index.welcome.h1[browser_language]
+    if (browser_language in language_data.welcome.h1) {
+        h1.innerHTML = language_data.welcome.h1[browser_language]
     } else {
-        h1.innerHTML = information.index.welcome.h1.en
+        h1.innerHTML = language_data.welcome.h1.en
     }
 }
 
-function createAboutUs() {
+function createAboutUs(language_data) {
     let h4 = document.querySelector(".aboutUs > h4")
     let p = document.querySelector(".aboutUs > p")
 
-    if (browser_language in information.index.aboutUs.h4) {
-        h4.innerHTML = information.index.aboutUs.h4[browser_language]
-        p.innerHTML = information.index.aboutUs.p[browser_language]
+    if (browser_language in language_data.aboutUs.h4) {
+        h4.innerHTML = language_data.aboutUs.h4[browser_language]
+        p.innerHTML = language_data.aboutUs.p[browser_language]
     } else {
-        h4.innerHTML = information.index.aboutUs.h4.en
-        p.innerHTML = information.index.aboutUs.p.en
+        h4.innerHTML = language_data.aboutUs.h4.en
+        p.innerHTML = language_data.aboutUs.p.en
     }
 }
 
-function createClientSetup() {
+function createClientSetup(language_data) {
     let h4 = document.querySelector(".clientSetup > h4")
     let p = document.querySelector(".clientSetup > p")
 
-    if (browser_language in information.index.clientSetup.h4) {
-        h4.innerHTML = information.index.clientSetup.h4[browser_language]
-        p.innerHTML = information.index.clientSetup.p[browser_language]
+    if (browser_language in language_data.clientSetup.h4) {
+        h4.innerHTML = language_data.clientSetup.h4[browser_language]
+        p.innerHTML = language_data.clientSetup.p[browser_language]
     } else {
-        h4.innerHTML = information.index.clientSetup.h4.en
-        p.innerHTML = information.index.clientSetup.p.en
+        h4.innerHTML = language_data.clientSetup.h4.en
+        p.innerHTML = language_data.clientSetup.p.en
     }
 }
 
-function createDiscord() {
+function createDiscord(language_data) {
     let h4 = document.querySelector(".discord > h4")
     let p = document.querySelector(".discord > p")
 
-    if (browser_language in information.index.discord.h4) {
-        h4.innerHTML = information.index.discord.h4[browser_language]
-        p.innerHTML = information.index.discord.p[browser_language]
+    if (browser_language in language_data.discord.h4) {
+        h4.innerHTML = language_data.discord.h4[browser_language]
+        p.innerHTML = language_data.discord.p[browser_language]
     } else {
-        h4.innerHTML = information.index.discord.h4.en
-        p.innerHTML = information.index.discord.p.en
+        h4.innerHTML = language_data.discord.h4.en
+        p.innerHTML = language_data.discord.p.en
     }
 }
 
-function createRulesInfo() {
+function createRulesInfo(language_data) {
     let h4 = document.querySelector(".rules > h4")
     let ul = document.querySelector(".rules > ul")
 
-    if (browser_language in information.index.rules.h4) {
-        h4.innerHTML = information.index.rules.h4[browser_language]
+    if (browser_language in language_data.rules.h4) {
+        h4.innerHTML = language_data.rules.h4[browser_language]
 
-        information.index.rules.li.forEach((rule) => {
+        language_data.rules.li.forEach((rule) => {
             let li = document.createElement("li")
             li.innerHTML = rule[browser_language]
             ul.appendChild(li)
         })
 
     } else {
-        h4.innerHTML = information.index.rules.h4.en
+        h4.innerHTML = language_data.rules.h4.en
 
-        information.index.rules.li.forEach((rule) => {
+        language_data.li.forEach((rule) => {
             let li = document.createElement("li")
             li.innerHTML = rule.en
             ul.appendChild(li)
@@ -217,23 +172,23 @@ function createRulesInfo() {
     }
 }
 
-function createServerInfo() {
+function createServerInfo(language_data) {
     let h4 = document.querySelector(".serverSettings > h4")
     let ul = document.querySelector(".serverSettings > ul")
 
-    if (browser_language in information.index.serverSettings.h4) {
-        h4.innerHTML = information.index.serverSettings.h4[browser_language]
+    if (browser_language in language_data.serverSettings.h4) {
+        h4.innerHTML = language_data.serverSettings.h4[browser_language]
 
-        information.index.serverSettings.li.forEach((setting) => {
+        language_data.serverSettings.li.forEach((setting) => {
             let li = document.createElement("li")
             li.innerHTML = setting[browser_language]
             ul.appendChild(li)
         })
 
     } else {
-        h4.innerHTML = information.index.serverSettings.h4.en
+        h4.innerHTML = language_data.serverSettings.h4.en
 
-        information.index.serverSettings.li.forEach((setting) => {
+        language_data.serverSettings.li.forEach((setting) => {
             let li = document.createElement("li")
             li.innerHTML = setting.en
             ul.appendChild(li)
@@ -241,26 +196,26 @@ function createServerInfo() {
     }
 }
 
-function createContribute() {
+function createContribute(language_data) {
     let h4 = document.querySelector(".contribute > h4")
     let p = document.querySelector(".contribute > p")
     let ul = document.querySelector(".contribute > ul")
 
-    if (browser_language in information.index.contribute.h4) {
-        h4.innerHTML = information.index.contribute.h4[browser_language]
-        p.innerHTML = information.index.contribute.p[browser_language]
+    if (browser_language in language_data.contribute.h4) {
+        h4.innerHTML = language_data.contribute.h4[browser_language]
+        p.innerHTML = language_data.contribute.p[browser_language]
 
-        information.index.contribute.li.forEach((listItem) => {
+        language_data.contribute.li.forEach((listItem) => {
             let li = document.createElement("li")
             li.innerHTML = listItem[browser_language]
             ul.appendChild(li)
         })
 
     } else {
-        h4.innerHTML = information.index.contribute.h4.en
-        p.innerHTML = information.index.contribute.p.en
+        h4.innerHTML = language_data.contribute.h4.en
+        p.innerHTML = language_data.contribute.p.en
 
-        information.index.contribute.li.forEach((listItem) => {
+        language_data.contribute.li.forEach((listItem) => {
             let li = document.createElement("li")
             li.innerHTML = listItem.en
             ul.appendChild(li)
@@ -365,13 +320,19 @@ function createContributeUpstream() {
     }
 }
 
-createWelcome()
-createAboutUs()
-createClientSetup()
-createDiscord()
-createRulesInfo()
-createServerInfo()
-createContribute()
-createBug()
-createYourOwnServer()
-createContributeUpstream()
+async function get_language_data() {
+    const response = await fetch('./script/language/index.json')
+    const language_data = await response.json()
+    createWelcome(language_data)
+    createAboutUs(language_data)
+    createClientSetup(language_data)
+    createDiscord(language_data)
+    createRulesInfo(language_data)
+    createServerInfo(language_data)
+    createContribute(language_data)
+    createBug()
+    createYourOwnServer()
+    createContributeUpstream()
+}
+
+get_language_data()
