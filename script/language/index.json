@@ -133,5 +133,62 @@
                 "en": "<a href='https://github.com/kaincenteno/wiki'>wiki Github</a>."
             }
         ]
+    },
+    "foundBug": {
+        "h4": {
+            "es": "ENCONTRASTE UN ERROR EN EL JUEGO",
+            "zh": "",
+            "en": "FOUND A BUG IN THE GAME"
+        },
+        "p": {
+            "es": "Si haz encontrado un error en el juego, te recomendamos crear una discusion:",
+            "zh": "",
+            "en": "We encourage you to submit it through a discussion. If you have found a bug in the game:"
+        },
+        "li": [
+            {
+                "es": "<a href='https://github.com/LandSandBoat/server/discussions'>Discusion de Github del LandSandBoat Server</a>",
+                "zh": "",
+                "en": "<a href='https://github.com/LandSandBoat/server/discussions'>LandSandBoat Server Github Discussion</a>"
+            }
+        ]
+    },
+    "yourOwnServer": {
+        "h4": {
+            "es": "CREA TU PROPIO SERVIDOR",
+            "zh": "",
+            "en": "RUN YOUR OWN SERVER"
+        },
+        "p": {
+            "es": "Puedes encontrar toda la informacion necesaria para crear tu propio servidor en la wiki de Github del LandSandBoat Server. Nosotros (xiweb) no provehemos soporte para crear tu propio servidor.",
+            "zh": "",
+            "en": "You can find all the information needed to run your own private server by going to the project's github wiki. We (xiweb) do not provide support for setting up your own server."
+        },
+        "li": [
+            {
+                "es": "<a href='https://github.com/LandSandBoat/server/wiki'>Github Wiki del LandSandBoat Server</a>",
+                "zh": "",
+                "en": "<a href='https://github.com/LandSandBoat/server/wiki'>LandSandBoat Server Github Wiki</a>"
+            }
+        ]
+    },
+    "contributeUpstream": {
+        "h4": {
+            "es": "CONTRIBUYE UPSTREAM (REPO LANDSANDBOAT)",
+            "zh": "",
+            "en": "CONTRIBUTE UPSTREAM (LANDSANDBOAT REPO)"
+        },
+        "p": {
+            "es": "Upstream tienes estandares altos en el codigo que es fusionado. POR FAVOR revise la guia antes de crear cualquier trabajo. No queremos que los sentimientos de nadie sean heridos y/o su tiempo malgastado",
+            "zh": "",
+            "en": "Upstream has high standards on the code being merged. PLEASE PLEASE PLEASE check past PRs and read their guidelines before submitting any work. We do not want anyone's feelings hurt and/or their time wasted."
+        },
+        "li": [
+            {
+                "es": "<a href='https://github.com/LandSandBoat/server'>Github del LandSandBoat Server</a>",
+                "zh": "",
+                "en": "<a href='https://github.com/LandSandBoat/server'>LandSandBoat Server Github</a>"
+            }
+        ]
     }
 }

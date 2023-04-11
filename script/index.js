@@ -126,98 +126,82 @@ function createContribute(language_data) {
     }
 }
 
-function createBug() {
+function createBug(language_data) {
     let h4 = document.querySelector(".foundBug > h4")
     let p = document.querySelector(".foundBug > p")
     let ul = document.querySelector(".foundBug > ul")
 
-    if (browser_language.startsWith('es')) {
-        h4.innerHTML = "ENCONTRASTE UN ERROR EN EL JUEGO"
-        p.innerHTML = "Si haz encontrado un error en el juego, te recomendamos crear una discusion:"
-        const bugList = [
-            "<a href='https://github.com/LandSandBoat/server/discussions'>Discusion de Github del LandSandBoat Server</a>",
-        ]
+    if (browser_language in language_data.foundBug.h4) {
+        h4.innerHTML = language_data.foundBug.h4[browser_language]
+        p.innerHTML = language_data.foundBug.p[browser_language]
 
-        bugList.forEach((setting) => {
+        language_data.foundBug.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = setting
+            li.innerHTML = listItem[browser_language]
             ul.appendChild(li)
         })
-    } else {
-        h4.innerHTML = "FOUND A BUG IN THE GAME"
-        p.innerHTML = "We encourage you to submit it through a discussion. If you have found a bug in the game: "
-        const bugList = [
-            "<a href='https://github.com/LandSandBoat/server/discussions'>LandSandBoat Server Github Discussion</a>",
-        ]
 
-        bugList.forEach((setting) => {
+    } else {
+        h4.innerHTML = language_data.foundBug.h4.en
+        p.innerHTML = language_data.foundBug.p.en
+
+        language_data.foundBug.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = setting
+            li.innerHTML = listItem.en
             ul.appendChild(li)
         })
     }
 }
 
-function createYourOwnServer() {
+function createYourOwnServer(language_data) {
     let h4 = document.querySelector(".yourOwnServer > h4")
     let p = document.querySelector(".yourOwnServer > p")
     let ul = document.querySelector(".yourOwnServer > ul")
 
+    if (browser_language in language_data.yourOwnServer.h4) {
+        h4.innerHTML = language_data.yourOwnServer.h4[browser_language]
+        p.innerHTML = language_data.yourOwnServer.p[browser_language]
 
-    if (browser_language.startsWith('es')) {
-        h4.innerHTML = "CREA TU PROPIO SERVIDOR"
-        p.innerHTML = "Puedes encontrar toda la informacion necesaria para crear tu propio servidor en la wiki de Github del LandSandBoat Server. Nosotros (xiweb) no provehemos soporte para crear tu propio servidor."
-        const ownServerList = [
-            "<a href='https://github.com/LandSandBoat/server/wiki'>Github Wiki del LandSandBoat Server</a>",
-        ]
-
-        ownServerList.forEach((setting) => {
+        language_data.yourOwnServer.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = setting
+            li.innerHTML = listItem[browser_language]
             ul.appendChild(li)
         })
-    } else {
-        h4.innerHTML = "RUN YOUR OWN SERVER"
-        p.innerHTML = "You can find all the information needed to run your own private server by going to the project's github wiki. We (xiweb) do not provide support for setting up your own server."
-        const ownServerList = [
-            "<a href='https://github.com/LandSandBoat/server/wiki'>LandSandBoat Server Github Wiki</a>",
-        ]
 
-        ownServerList.forEach((setting) => {
+    } else {
+        h4.innerHTML = language_data.yourOwnServer.h4.en
+        p.innerHTML = language_data.yourOwnServer.p.en
+
+        language_data.yourOwnServer.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = setting
+            li.innerHTML = listItem.en
             ul.appendChild(li)
         })
     }
 }
 
-function createContributeUpstream() {
+function createContributeUpstream(language_data) {
     let h4 = document.querySelector(".contributeUpstream > h4")
     let p = document.querySelector(".contributeUpstream > p")
     let ul = document.querySelector(".contributeUpstream > ul")
 
-    if (browser_language.startsWith('es')) {
-        h4.innerHTML = "CONTRIBUYE UPSTREAM (REPO LANDSANDBOAT)"
-        p.innerHTML = "Upstream tienes estandares altos en el codigo que es fusionado. POR FAVOR revise la guia antes de crear cualquier trabajo. No queremos que los sentimientos de nadie sean heridos y/o su tiempo malgastado"
-        const upstreamList = [
-            "<a href='https://github.com/LandSandBoat/server'>Github del LandSandBoat Server</a>",
-        ]
+    if (browser_language in language_data.contributeUpstream.h4) {
+        h4.innerHTML = language_data.contributeUpstream.h4[browser_language]
+        p.innerHTML = language_data.contributeUpstream.p[browser_language]
 
-        upstreamList.forEach((setting) => {
+        language_data.contributeUpstream.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = setting
+            li.innerHTML = listItem[browser_language]
             ul.appendChild(li)
         })
-    } else {
-        h4.innerHTML = "CONTRIBUTE UPSTREAM (LANDSANDBOAT REPO)"
-        p.innerHTML = "Upstream has high standards on the code being merged. PLEASE PLEASE PLEASE check past PRs and read their guidelines before submitting any work. We do not want anyone's feelings hurt and/or their time wasted."
-        const upstreamList = [
-            "<a href='https://github.com/LandSandBoat/server'>LandSandBoat Server Github</a>",
-        ]
 
-        upstreamList.forEach((setting) => {
+    } else {
+        h4.innerHTML = language_data.contributeUpstream.h4.en
+        p.innerHTML = language_data.contributeUpstream.p.en
+
+        language_data.contributeUpstream.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = setting
+            li.innerHTML = listItem.en
             ul.appendChild(li)
         })
     }
@@ -233,9 +217,9 @@ async function get_language_data() {
     createRulesInfo(language_data)
     createServerInfo(language_data)
     createContribute(language_data)
-    createBug()
-    createYourOwnServer()
-    createContributeUpstream()
+    createBug(language_data)
+    createYourOwnServer(language_data)
+    createContributeUpstream(language_data)
 }
 
 get_language_data()
