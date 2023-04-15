@@ -14,7 +14,14 @@
 
 <body>
 <div class="content">
-  <div class='menu'></div>
+  <div class='menu'>
+      <table>
+        <tbody>
+          <tr><tr>
+        </tbody>
+      </table>
+  </div>
+
   <h1>Items in Auction House</h1>
   <p>Enter at least four letters of the item you are searching for</p>
   <?php

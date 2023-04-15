@@ -17,7 +17,13 @@ header("Refresh: 142"); // One vanadiel hour(ish)
 
 <body>
   <div class="content">
-    <div class='menu'></div>
+    <div class='menu'>
+      <table>
+        <tbody>
+          <tr><tr>
+        </tbody>
+      </table>
+    </div>
   <?php create_weather_table();?>
   </div>
 </body>
