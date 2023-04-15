@@ -1,7 +1,5 @@
 function createMenu() {
-    let div = document.querySelector('.menu')
-    let table = document.createElement('table')
-    let th = document.createElement("th")
+    let tr = document.querySelector(".menu > table > tbody > tr")
 
     const menuItems = [
         "<button onClick=\"location.href=\'./index.php\'\" type=\"button\">Home</button>",
@@ -13,13 +11,10 @@ function createMenu() {
         "<button onClick=\"location.href=\'./my_account.php\'\" type=\"button\">My Account</button>",
     ]
 
-    div.appendChild(table)
-    table.appendChild(th)
-
     menuItems.forEach((item) => {
         let td = document.createElement("td")
         td.innerHTML = item
-        th.appendChild(td)
+        tr.appendChild(td)
     })
 }
 

@@ -17,7 +17,14 @@ header("Refresh: 120");
 
 <body>
   <div class="content">
-    <div class='menu'></div>
+    <div class='menu'>
+      <table>
+        <tbody>
+          <tr><tr>
+        </tbody>
+      </table>
+    </div>
+
     <h3>Characters Online:</h3>
 
     <script type='module'>

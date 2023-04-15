@@ -13,7 +13,13 @@
 
 <body>
   <div class="content">
-    <div class='menu'></div>
+    <div class='menu'>
+      <table>
+        <tbody>
+          <tr><tr>
+        </tbody>
+      </table>
+    </div>
 
     <h1>My Account</h1>
     <p>Enter your credentials to log in</p>
