@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-require 'functions/query_players_online.php';
-header("Refresh: 120");
-?>
+<?php header("Refresh: 120"); ?>
 <script async type="text/javascript" src="script/menu.js"></script>
 
 <head>
@@ -25,79 +22,72 @@ header("Refresh: 120");
       </table>
     </div>
 
-    <h3>Characters Online:</h3>
+    <div class="onlineNow">
+      <h1>Characters Online:</h1>
+      <table class="plaintable">
+        <thead>
+          <tr>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
 
     <script type='module'>
-      //import JOB from './globals/job.json' assert {type: 'json'}
-      const jobRequest = new Request('./globals/job.json');
+      function createHeader() {
+        let tr = document.querySelector(".onlineNow > table > thead > tr")
 
-      let playersOnline = <?php echo json_encode(query_players_online()); ?>
+        let th1 = document.createElement('th')
+        let th2 = document.createElement('th')
+        let th3 = document.createElement('th')
+        let th4 = document.createElement('th')
+        let th5 = document.createElement('th')
+        th1.innerHTML = 'Main Job'
+        th2.innerHTML = 'Sub Job'
+        th3.innerHTML = 'Name'
+        th4.innerHTML = 'Zone'
+        tr.appendChild(th1)
+        tr.appendChild(th2)
+        tr.appendChild(th3)
+        tr.appendChild(th4)
+      }
 
-      let div = document.querySelector(".players_table")
+      function createBody() {
+        const jobRequest = new Request('./globals/job.json')
+        let tbody = document.querySelector(".onlineNow > table > tbody")
+        <?php include_once 'functions/query_players_online.php'; ?>
+        let playersOnline = <?php echo json_encode(query_players_online()); ?>
 
-      // create table node
-      let table = document.createElement('table')
-      table.classList.add('plaintable')
-
-      // create table header node
-      let thead = document.createElement('thead')
-
-      // create all content inside table header
-      let thead1 = document.createElement('th')
-      let thead2 = document.createElement('th')
-      let thead3 = document.createElement('th')
-      let thead4 = document.createElement('th')
-      let thead5 = document.createElement('th')
-      thead1.innerHTML = 'Main Job'
-      thead2.innerHTML = 'Sub Job'
-      thead3.innerHTML = 'Name'
-      thead4.innerHTML = 'Zone'
-      let row1 = document.createElement('tr')
-      row1.appendChild(thead1)
-      row1.appendChild(thead2)
-      row1.appendChild(thead3)
-      row1.appendChild(thead4)
-      thead.appendChild(row1)
-
-      // create table body node
-      let tbody = document.createElement('tbody')
-
-      // Creating Content Rows
-      fetch(jobRequest)
-        .then((response) => response.json())
-        .then((data) => {
-          for (let i = 0; i < playersOnline.length; i++) {
-            let tdata1 = document.createElement('td')
-            let tdata2 = document.createElement('td')
-            let tdata3 = document.createElement('td')
-            let tdata4 = document.createElement('td')
-            tdata1.innerHTML = playersOnline[i]['mlvl'] + " " + data[playersOnline[i]['mjob']]
-            if (playersOnline[i]['slvl'] == 0) {
-              tdata2.innerHTML = ''
-            } else {
-              tdata2.innerHTML = playersOnline[i]['slvl'] + " " + data[playersOnline[i]['sjob']]
+        // Creating Content Rows
+        fetch(jobRequest)
+          .then((response) => response.json())
+          .then((data) => {
+            for (let i = 0; i < playersOnline.length; i++) {
+              let td1 = document.createElement('td')
+              let td2 = document.createElement('td')
+              let td3 = document.createElement('td')
+              let td4 = document.createElement('td')
+              td1.innerHTML = playersOnline[i]['mlvl'] + " " + data[playersOnline[i]['mjob']]
+              if (playersOnline[i]['slvl'] == 0) {
+                td2.innerHTML = ''
+              } else {
+                td2.innerHTML = playersOnline[i]['slvl'] + " " + data[playersOnline[i]['sjob']]
+              }
+              td3.innerHTML = playersOnline[i]['charname']
+              td4.innerHTML = playersOnline[i]['zonename']
+              let row2 = document.createElement('tr')
+              row2.appendChild(td1)
+              row2.appendChild(td2)
+              row2.appendChild(td3)
+              row2.appendChild(td4)
+              tbody.appendChild(row2)
             }
-            tdata3.innerHTML = playersOnline[i]['charname']
-            tdata4.innerHTML = playersOnline[i]['zonename']
-            let row2 = document.createElement('tr')
-            row2.appendChild(tdata1)
-            row2.appendChild(tdata2)
-            row2.appendChild(tdata3)
-            row2.appendChild(tdata4)
-            tbody.appendChild(row2)
-          }
-        })
-        .catch(console.error);
+          })
+          .catch(console.error);
+        }
 
-      // Append all content from above to table header and body
-      table.appendChild(thead)
-      table.appendChild(tbody)
-
-      // Inserts table inside the div
-      div.innerHTML = ''
-      div.appendChild(table)
+      createHeader()
+      createBody()
     </script>
-
-    <div class='players_table'></div>
   </div>
 </body>
