@@ -84,6 +84,4 @@ fetch("auctionhouse/php/queryPlayerAuctionItems.php")
           }}
         )
       )
-
-
   })
