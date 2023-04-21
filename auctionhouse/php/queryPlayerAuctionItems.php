@@ -1,7 +1,10 @@
 <?php
-function query_auction_house(){
-    require 'config/database.conf';
-    
+    require $_SERVER['DOCUMENT_ROOT'] . '/config/database.conf';
+
+    session_start();
+    $accountId = json_decode($_SESSION['chars_info'], true);
+    $accountId = $accountId[0]['charid'];
+
     $category = array();
     $name = array();
     $stack = array();
@@ -11,7 +14,7 @@ function query_auction_house(){
         $conn = new PDO("mysql:host=$dbServer;dbname=$dbName", $dbUser, $dbPass);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $queryAH  = $conn->query('
+        $sth  = $conn->prepare('
             SELECT
                 ib.itemid,
                 ib.aH,
@@ -21,11 +24,15 @@ function query_auction_house(){
             FROM item_basic ib
             INNER JOIN
                 auction_house ah ON ib.itemid = ah.itemid
-            WHERE ah.buyer_name IS NULL
+            WHERE ah.seller = :accountId
             GROUP BY ah.itemId, ah.stack
             ORDER BY ib.aH ASC, ib.itemId;');
+        $sth->bindParam(':accountId', $accountId, PDO::PARAM_STR);
+        $sth->execute();
+
         $i = 0;
-        while ($row = $queryAH->fetch()){
+
+        while ($row = $sth->fetch()) {
             if ($row["aH"] == 0) {
                 error_log(
                     "Item {$row["name"]} (itemid {$row["itemid"]}) doesnt have a valid category in globals/ahID.php",
@@ -39,9 +46,8 @@ function query_auction_house(){
                 $i = $i + 1;
             }
         }
-
-        return array($category, $name, $stack, $listings);
+        error_log($name[0]);
+        echo json_encode(array($category, $name, $stack, $listings));
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
-}
