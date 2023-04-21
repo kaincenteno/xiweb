@@ -1,5 +1,5 @@
 async function getAHCategoryID() {
-  const response = await fetch("globals/ahID.json")
+  const response = await fetch("../globals/ahID.json")
   const jsonData = await response.json()
   return jsonData
 }
@@ -12,7 +12,7 @@ function queryAuctionHouse() {
     auctionTable.remove()
   }
 
-  fetch("auctionhouse/php/query_auction_house.php")
+  fetch("./php/query_auction_house.php")
     .then((response) => {
       if(!response.ok){
         throw new Error("Something went wrong!");
