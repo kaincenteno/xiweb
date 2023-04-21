@@ -32,6 +32,6 @@
   </div>
 
   <script type="text/javascript" src="../script/menu.js"></script>
-  <script type="text/javascript" src="auctionhouse/script/queryAuctionHouse.js"></script>
-  <script type="text/javascript" src="auctionhouse/script/query_player_auction_items.js"></script>
+  <script type="text/javascript" src="./script/queryAuctionHouse.js"></script>
+  <script type="text/javascript" src="./script/query_player_auction_items.js"></script>
 </body>

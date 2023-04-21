@@ -1,10 +1,10 @@
 async function getAHCategoryID() {
-  const response = await fetch("globals/ahID.json")
+  const response = await fetch("../globals/ahID.json")
   const jsonData = await response.json()
   return jsonData
 }
 
-fetch("auctionhouse/php/queryPlayerAuctionItems.php")
+fetch("./php/queryPlayerAuctionItems.php")
   .then((response) => {
     if(!response.ok){
       throw new Error("Something went wrong!");
