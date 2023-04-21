@@ -34,7 +34,7 @@ try {
 
     $sth->execute();
     $i = 0;
-    while ($result = $sth->fetch()){
+    while ($result = $sth->fetch()) {
         $account[$i] = array(
             "charid" => $result['charid'],
             "charname" => $result['charname'],
@@ -45,6 +45,7 @@ try {
     if ($account[0]) {
         session_start();
         $_SESSION['username'] = $username;
+        $_SESSION['chars_info'] = json_encode($account);
         echo "<h1>" . $_SESSION['username'] . "</h1>";
         echo "<br>";
         foreach ($account as $char) {
