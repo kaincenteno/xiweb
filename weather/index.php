@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require 'functions/create_weather_table.php';
+require 'php/create_weather_table.php';
 header("Refresh: 142"); // One vanadiel hour(ish)
 ?>
-<script async type="text/javascript" src="script/menu.js"></script>
+<script async type="text/javascript" src="../script/menu.js"></script>
 
 <head>
   <meta charset="utf-8">

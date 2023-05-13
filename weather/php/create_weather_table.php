@@ -45,8 +45,8 @@ function GetWeatherForDay($blob, $day)
 
 function create_weather_table() 
 {
-    require 'config/database.conf';
-    require 'globals/weatherID.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/config/database.conf';
+    require $_SERVER['DOCUMENT_ROOT'] . '/globals/weatherID.php';
     
     $zones = array();
     
