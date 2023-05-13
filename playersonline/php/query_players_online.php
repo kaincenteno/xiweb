@@ -1,7 +1,7 @@
 <?php
 function query_players_online()
 {
-    include 'config/database.conf';
+    include '../config/database.conf';
     
     $playersOnline = array();
     

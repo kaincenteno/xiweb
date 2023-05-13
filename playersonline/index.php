@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php header("Refresh: 120"); ?>
-<script async type="text/javascript" src="script/menu.js"></script>
+<script async type="text/javascript" src="../script/menu.js"></script>
 
 <head>
   <meta charset="utf-8">
@@ -53,9 +53,9 @@
       }
 
       function createBody() {
-        const jobRequest = new Request('./globals/job.json')
+        const jobRequest = new Request('../globals/job.json')
         let tbody = document.querySelector(".onlineNow > table > tbody")
-        <?php include_once 'functions/query_players_online.php'; ?>
+        <?php include_once 'php/query_players_online.php'; ?>
         let playersOnline = <?php echo json_encode(query_players_online()); ?>
 
         // Creating Content Rows
