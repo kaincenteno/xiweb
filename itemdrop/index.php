@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require'functions/query_item_drop.php'; ?>
-<script async type="text/javascript" src="script/menu.js"></script>
+<?php require'php/query_item_drop.php'; ?>
+<script async type="text/javascript" src="../script/menu.js"></script>
 
 <head>
     <meta charset="utf-8">

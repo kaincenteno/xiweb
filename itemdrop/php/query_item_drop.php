@@ -1,6 +1,6 @@
 <?php
 function query_item_drop(){
-    require 'config/database.conf';
+    require $_SERVER['DOCUMENT_ROOT'] . '/config/database.conf';
         
     $itemId = array();
     $dropType = array();
