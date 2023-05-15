@@ -27,6 +27,10 @@
       <table class="plaintable">
         <thead>
           <tr>
+            <th>Main Job</th>
+            <th>Sub Job</th>
+            <th>Name</th>
+            <th>Zone</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -34,24 +38,6 @@
     </div>
 
     <script type='module'>
-      function createHeader() {
-        let tr = document.querySelector(".onlineNow > table > thead > tr")
-
-        let th1 = document.createElement('th')
-        let th2 = document.createElement('th')
-        let th3 = document.createElement('th')
-        let th4 = document.createElement('th')
-        let th5 = document.createElement('th')
-        th1.innerHTML = 'Main Job'
-        th2.innerHTML = 'Sub Job'
-        th3.innerHTML = 'Name'
-        th4.innerHTML = 'Zone'
-        tr.appendChild(th1)
-        tr.appendChild(th2)
-        tr.appendChild(th3)
-        tr.appendChild(th4)
-      }
-
       function createBody() {
         const jobRequest = new Request('../globals/job.json')
         let tbody = document.querySelector(".onlineNow > table > tbody")
@@ -86,7 +72,6 @@
           .catch(console.error);
         }
 
-      createHeader()
       createBody()
     </script>
   </div>
