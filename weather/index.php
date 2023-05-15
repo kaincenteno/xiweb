@@ -19,8 +19,8 @@ header("Refresh: 142"); // One vanadiel hour(ish)
 
     <div class="weather">
       <h3 class="vanadielTime"></h3>
-      <h4>The weather forecast for tomorrow is as follows.</h4>
       <table class="plaintable">
+        <caption >The weather forecast for tomorrow is as follows:</caption>
         <thead>
           <tr><th>Zone Name</th><th>Likely 50%</th><th>Chance 35%</th><th>Rarely 15%</th></tr>
         </thead>
