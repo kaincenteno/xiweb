@@ -1,7 +1,7 @@
 <?php
 function query_players_online()
 {
-    require $_SERVER['DOCUMENT_ROOT'] . '/config/database.conf';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.conf';
     
     $playersOnline = array();
     

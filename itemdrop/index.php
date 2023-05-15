@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require'php/query_item_drop.php'; ?>
+<?php require_once'php/query_item_drop.php'; ?>
 <script async type="text/javascript" src="../script/menu.js"></script>
 
 <head>

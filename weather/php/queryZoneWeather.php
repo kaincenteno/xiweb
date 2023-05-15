@@ -43,8 +43,8 @@
         );
     }
 
-    require $_SERVER['DOCUMENT_ROOT'] . '/config/database.conf';
-    require $_SERVER['DOCUMENT_ROOT'] . '/globals/weatherID.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.conf';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/globals/weatherID.php';
     
     $vanatime = VanadielClock();
     $today = WeatherCycleDay($vanatime);
