@@ -85,3 +85,5 @@ fetch("/auctionhouse/php/queryPlayerAuctionItems.php")
         )
       )
   })
+
+  .catch(console.error)

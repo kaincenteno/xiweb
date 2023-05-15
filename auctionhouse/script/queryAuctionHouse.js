@@ -87,6 +87,8 @@ function queryAuctionHouse() {
           )
         )
     })
+
+    .catch(console.error)
 }
 
 let fieldQuery = document.getElementById('itemField').value
