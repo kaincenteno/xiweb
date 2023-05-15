@@ -23,8 +23,8 @@
     </div>
 
     <div class="onlineNow">
-      <h1>Characters Online:</h1>
       <table class="plaintable">
+        <caption>Characters currently online</caption>
         <thead>
           <tr>
             <th>Main Job</th>
