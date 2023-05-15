@@ -14,13 +14,7 @@
 
 <body>
   <div class="content">
-    <div class='menu'>
-      <table>
-        <tbody>
-          <tr><tr>
-        </tbody>
-      </table>
-    </div>
+    <div class='menu'></div>
 
     <div class="onlineNow">
       <table class="plaintable">
