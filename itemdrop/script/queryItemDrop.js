@@ -14,21 +14,28 @@ fetch('./globals/droptype.json')
     .then(data => {
         DROPTYPE = data
     })
+    .catch(console.error)
+
 fetch('./globals/itemname.json')
     .then(response => response.json())
     .then(data => {
         ITEMNAME = data
     })
+    .catch(console.error)
+
 fetch('./globals/zoneid.json')
     .then(response => response.json())
     .then(data => {
         ZONEID = data
     })
+    .catch(console.error)
+
 fetch('./globals/mobname.json')
     .then(response => response.json())
     .then(data => {
         MOBNAME = data
     })
+    .catch(console.error)
 
 fetch('./itemdrop/php/query_item_drop.php')
     .then(response => response.json())
@@ -39,6 +46,7 @@ fetch('./itemdrop/php/query_item_drop.php')
         poolId = data[3],
         zoneName = data[4]
     })
+    .catch(console.error)
 
 function itemSearch() {
     let fieldQuery = document.getElementById('itemField').value
