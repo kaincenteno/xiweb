@@ -1,7 +1,8 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
+use config\database;
+
 function query_item_drop(){
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.conf';
-        
     $itemId = array();
     $dropType = array();
     $dropRate = array();
@@ -9,7 +10,11 @@ function query_item_drop(){
     $zoneName = array();
 
     try {
-        $conn = new PDO("mysql:host=$dbServer;dbname=$dbName", $dbUser, $dbPass);
+        $conn = new PDO(
+            "mysql:host=" . config\database\DBSERVER . "; dbname=" . config\database\DBNAME,
+            config\database\DBUSER,
+            config\database\DBPASS
+        );
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $queryItems  = $conn->query('
