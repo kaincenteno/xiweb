@@ -1,23 +1,22 @@
 function createMenu() {
-    let tr = document.querySelector(".menu > table > tbody > tr")
+    let div = document.querySelector(".menu")
     let rootUrl = window.location.origin
 
-
-
     const menuItems = [
-        "<button onClick=\"location.href='" + rootUrl + "/index.php'\" type=\"button\">Home</button>",
-        "<button onClick=\"location.href='https://status.catsangel.com'\" type=\"button\">Server Status</button>",
-        "<button onClick=\"location.href='" + rootUrl + "/playersonline.php'\" type=\"button\">Players Currently Online</button>",
-        "<button onClick=\"location.href='" + rootUrl + "/weather.php'\" type=\"button\">Weather Forecast</button>",
-        "<button onClick=\"location.href='" + rootUrl + "/auctionhouse'\" type=\"button\">Auction House</button>",
-        "<button onClick=\"location.href='" + rootUrl + "/item_drop.php'\" type=\"button\">Item Drop</button>",
-        "<button onClick=\"location.href='" + rootUrl + "/my_account.php'\" type=\"button\">My Account</button>",
+        ["Home", `${rootUrl}/index.php`],
+        ["Server Status", "https://status.catsangel.com"],
+        ["Players Currently Online", `${rootUrl}/playersonline`],
+        ["Weather Forecast", `${rootUrl}/weather`],
+        ["Auction House", `${rootUrl}/auctionhouse`],
+        ["Item Drop", `${rootUrl}/itemdrop`],
+        ["My Account", `${rootUrl}/my_account.php`],
     ]
 
     menuItems.forEach((item) => {
-        let td = document.createElement("td")
-        td.innerHTML = item
-        tr.appendChild(td)
+        let button = document.createElement("button")
+        button.innerHTML = item[0]
+        button.setAttribute("onClick", `location.href='${item[1]}'`)
+        div.appendChild(button)
     })
 }
 

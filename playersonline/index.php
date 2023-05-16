@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php header("Refresh: 120"); ?>
-<script async type="text/javascript" src="script/menu.js"></script>
+<script async type="text/javascript" src="../script/menu.js"></script>
 
 <head>
   <meta charset="utf-8">
@@ -14,19 +14,17 @@
 
 <body>
   <div class="content">
-    <div class='menu'>
-      <table>
-        <tbody>
-          <tr><tr>
-        </tbody>
-      </table>
-    </div>
+    <div class='menu'></div>
 
     <div class="onlineNow">
-      <h1>Characters Online:</h1>
       <table class="plaintable">
+        <caption>Characters currently online</caption>
         <thead>
           <tr>
+            <th>Main Job</th>
+            <th>Sub Job</th>
+            <th>Name</th>
+            <th>Zone</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -34,28 +32,10 @@
     </div>
 
     <script type='module'>
-      function createHeader() {
-        let tr = document.querySelector(".onlineNow > table > thead > tr")
-
-        let th1 = document.createElement('th')
-        let th2 = document.createElement('th')
-        let th3 = document.createElement('th')
-        let th4 = document.createElement('th')
-        let th5 = document.createElement('th')
-        th1.innerHTML = 'Main Job'
-        th2.innerHTML = 'Sub Job'
-        th3.innerHTML = 'Name'
-        th4.innerHTML = 'Zone'
-        tr.appendChild(th1)
-        tr.appendChild(th2)
-        tr.appendChild(th3)
-        tr.appendChild(th4)
-      }
-
       function createBody() {
-        const jobRequest = new Request('./globals/job.json')
+        const jobRequest = new Request('../globals/job.json')
         let tbody = document.querySelector(".onlineNow > table > tbody")
-        <?php include_once 'functions/query_players_online.php'; ?>
+        <?php include_once 'php/query_players_online.php'; ?>
         let playersOnline = <?php echo json_encode(query_players_online()); ?>
 
         // Creating Content Rows
@@ -86,7 +66,6 @@
           .catch(console.error);
         }
 
-      createHeader()
       createBody()
     </script>
   </div>

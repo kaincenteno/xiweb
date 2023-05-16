@@ -1,13 +1,18 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
+use config\database;
+
 function query_players_online()
 {
-    include 'config/database.conf';
-    
     $playersOnline = array();
     
     // Information is being read from database
     try {
-        $conn = new PDO("mysql:host=$dbServer;dbname=$dbName", $dbUser, $dbPass);
+        $conn = new PDO(
+            "mysql:host=" . config\database\DBSERVER . "; dbname=" . config\database\DBNAME,
+            config\database\DBUSER,
+            config\database\DBPASS
+        );
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $getAccountsSessions  = $conn->query('

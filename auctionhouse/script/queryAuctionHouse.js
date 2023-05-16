@@ -12,7 +12,7 @@ function queryAuctionHouse() {
     auctionTable.remove()
   }
 
-  fetch("./php/query_auction_house.php")
+  fetch("/auctionhouse/php/query_auction_house.php")
     .then((response) => {
       if(!response.ok){
         throw new Error("Something went wrong!");
@@ -87,6 +87,8 @@ function queryAuctionHouse() {
           )
         )
     })
+
+    .catch(console.error)
 }
 
 let fieldQuery = document.getElementById('itemField').value

@@ -4,7 +4,7 @@ async function getAHCategoryID() {
   return jsonData
 }
 
-fetch("./php/queryPlayerAuctionItems.php")
+fetch("/auctionhouse/php/queryPlayerAuctionItems.php")
   .then((response) => {
     if(!response.ok){
       throw new Error("Something went wrong!");
@@ -85,3 +85,5 @@ fetch("./php/queryPlayerAuctionItems.php")
         )
       )
   })
+
+  .catch(console.error)

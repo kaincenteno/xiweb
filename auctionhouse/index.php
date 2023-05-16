@@ -12,13 +12,7 @@
 
 <body>
   <div class="content">
-    <div class='menu'>
-        <table>
-          <tbody>
-            <tr><tr>
-          </tbody>
-        </table>
-    </div>
+    <div class='menu'></div>
 
     <div class="auctionHouse">
       <h1>Items in Auction House</h1>
@@ -32,6 +26,6 @@
   </div>
 
   <script type="text/javascript" src="../script/menu.js"></script>
-  <script type="text/javascript" src="./script/queryAuctionHouse.js"></script>
-  <script type="text/javascript" src="./script/query_player_auction_items.js"></script>
+  <script type="text/javascript" src="/auctionhouse/script/queryAuctionHouse.js"></script>
+  <script type="text/javascript" src="/auctionhouse/script/query_player_auction_items.js"></script>
 </body>
