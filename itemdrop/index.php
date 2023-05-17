@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="xiweb Item Drop Info">
     <title>xiweb - Item Drop Info</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
 </head>
 
 <body>

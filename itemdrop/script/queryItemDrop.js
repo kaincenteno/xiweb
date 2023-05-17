@@ -9,35 +9,35 @@ let poolId
 let zoneName
 
 
-fetch('./globals/droptype.json')
+fetch('/globals/droptype.json')
     .then(response => response.json())
     .then(data => {
         DROPTYPE = data
     })
     .catch(console.error)
 
-fetch('./globals/itemname.json')
+fetch('/globals/itemname.json')
     .then(response => response.json())
     .then(data => {
         ITEMNAME = data
     })
     .catch(console.error)
 
-fetch('./globals/zoneid.json')
+fetch('/globals/zoneid.json')
     .then(response => response.json())
     .then(data => {
         ZONEID = data
     })
     .catch(console.error)
 
-fetch('./globals/mobname.json')
+fetch('/globals/mobname.json')
     .then(response => response.json())
     .then(data => {
         MOBNAME = data
     })
     .catch(console.error)
 
-fetch('./itemdrop/php/query_item_drop.php')
+fetch('/itemdrop/php/query_item_drop.php')
     .then(response => response.json())
     .then(data => {
         itemId = data[0],
