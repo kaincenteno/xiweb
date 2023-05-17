@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php header("Refresh: 120"); ?>
-<script async type="text/javascript" src="../script/menu.js"></script>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Shows information of players currently online">
   <title>xiweb - Players Online</title>
-  <link rel="stylesheet" href="css/style.css" type="text/css">
-  <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
 </head>
 
 <body>
@@ -69,4 +68,6 @@
       createBody()
     </script>
   </div>
+
+  <script type="text/javascript" src="/script/menu.js"></script>
 </body>

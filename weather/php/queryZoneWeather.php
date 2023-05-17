@@ -1,4 +1,9 @@
 <?php
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/globals/weatherID.php';
+
+    use config\database;
+
     function VanadielClock(){
         $VANA_EPOCH     = 1009810800;
         $VANA_YEAR      = 518400;
@@ -42,9 +47,6 @@
             "normal" => ($blob[$day] >> 10) & 31
         );
     }
-
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.conf';
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/globals/weatherID.php';
     
     $vanatime = VanadielClock();
     $today = WeatherCycleDay($vanatime);
@@ -53,7 +55,11 @@
     $output = array();
 
     try {
-        $conn = new PDO("mysql:host=$dbServer;dbname=$dbName", $dbUser, $dbPass);
+        $conn = new PDO(
+            "mysql:host=" . config\database\DBSERVER . "; dbname=" . config\database\DBNAME,
+            config\database\DBUSER,
+            config\database\DBPASS
+        );
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $queryWeather  = $conn->query('
