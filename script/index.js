@@ -6,9 +6,9 @@ function createWelcome(language_data) {
     let h1 = document.querySelector(".welcome > h1")
 
     if (browser_language in language_data.welcome.h1) {
-        h1.innerHTML = language_data.welcome.h1[browser_language]
+        h1.textContent = language_data.welcome.h1[browser_language]
     } else {
-        h1.innerHTML = language_data.welcome.h1.en
+        h1.textContent = language_data.welcome.h1.en
     }
 }
 
@@ -17,11 +17,11 @@ function createAboutUs(language_data) {
     let p = document.querySelector(".aboutUs > p")
 
     if (browser_language in language_data.aboutUs.h4) {
-        h4.innerHTML = language_data.aboutUs.h4[browser_language]
-        p.innerHTML = language_data.aboutUs.p[browser_language]
+        h4.textContent = language_data.aboutUs.h4[browser_language]
+        p.textContent = language_data.aboutUs.p[browser_language]
     } else {
-        h4.innerHTML = language_data.aboutUs.h4.en
-        p.innerHTML = language_data.aboutUs.p.en
+        h4.textContent = language_data.aboutUs.h4.en
+        p.textContent = language_data.aboutUs.p.en
     }
 }
 
@@ -30,11 +30,11 @@ function createClientSetup(language_data) {
     let p = document.querySelector(".clientSetup > p")
 
     if (browser_language in language_data.clientSetup.h4) {
-        h4.innerHTML = language_data.clientSetup.h4[browser_language]
-        p.innerHTML = language_data.clientSetup.p[browser_language]
+        h4.textContent = language_data.clientSetup.h4[browser_language]
+        p.textContent = language_data.clientSetup.p[browser_language]
     } else {
-        h4.innerHTML = language_data.clientSetup.h4.en
-        p.innerHTML = language_data.clientSetup.p.en
+        h4.textContent = language_data.clientSetup.h4.en
+        p.textContent = language_data.clientSetup.p.en
     }
 }
 
@@ -43,11 +43,11 @@ function createDiscord(language_data) {
     let p = document.querySelector(".discord > p")
 
     if (browser_language in language_data.discord.h4) {
-        h4.innerHTML = language_data.discord.h4[browser_language]
-        p.innerHTML = language_data.discord.p[browser_language]
+        h4.textContent = language_data.discord.h4[browser_language]
+        p.textContent = language_data.discord.p[browser_language]
     } else {
-        h4.innerHTML = language_data.discord.h4.en
-        p.innerHTML = language_data.discord.p.en
+        h4.textContent = language_data.discord.h4.en
+        p.textContent = language_data.discord.p.en
     }
 }
 
@@ -56,20 +56,20 @@ function createRulesInfo(language_data) {
     let ul = document.querySelector(".rules > ul")
 
     if (browser_language in language_data.rules.h4) {
-        h4.innerHTML = language_data.rules.h4[browser_language]
+        h4.textContent = language_data.rules.h4[browser_language]
 
         language_data.rules.li.forEach((rule) => {
             let li = document.createElement("li")
-            li.innerHTML = rule[browser_language]
+            li.textContent = rule[browser_language]
             ul.appendChild(li)
         })
 
     } else {
-        h4.innerHTML = language_data.rules.h4.en
+        h4.textContent = language_data.rules.h4.en
 
         language_data.li.forEach((rule) => {
             let li = document.createElement("li")
-            li.innerHTML = rule.en
+            li.textContent = rule.en
             ul.appendChild(li)
         })
     }
@@ -80,20 +80,20 @@ function createServerInfo(language_data) {
     let ul = document.querySelector(".serverSettings > ul")
 
     if (browser_language in language_data.serverSettings.h4) {
-        h4.innerHTML = language_data.serverSettings.h4[browser_language]
+        h4.textContent = language_data.serverSettings.h4[browser_language]
 
         language_data.serverSettings.li.forEach((setting) => {
             let li = document.createElement("li")
-            li.innerHTML = setting[browser_language]
+            li.textContent = setting[browser_language]
             ul.appendChild(li)
         })
 
     } else {
-        h4.innerHTML = language_data.serverSettings.h4.en
+        h4.textContent = language_data.serverSettings.h4.en
 
         language_data.serverSettings.li.forEach((setting) => {
             let li = document.createElement("li")
-            li.innerHTML = setting.en
+            li.textContent = setting.en
             ul.appendChild(li)
         })
     }
@@ -105,22 +105,22 @@ function createContribute(language_data) {
     let ul = document.querySelector(".contribute > ul")
 
     if (browser_language in language_data.contribute.h4) {
-        h4.innerHTML = language_data.contribute.h4[browser_language]
-        p.innerHTML = language_data.contribute.p[browser_language]
+        h4.textContent = language_data.contribute.h4[browser_language]
+        p.textContent = language_data.contribute.p[browser_language]
 
         language_data.contribute.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = listItem[browser_language]
+            li.textContent = listItem[browser_language]
             ul.appendChild(li)
         })
 
     } else {
-        h4.innerHTML = language_data.contribute.h4.en
-        p.innerHTML = language_data.contribute.p.en
+        h4.textContent = language_data.contribute.h4.en
+        p.textContent = language_data.contribute.p.en
 
         language_data.contribute.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = listItem.en
+            li.textContent = listItem.en
             ul.appendChild(li)
         })
     }
@@ -132,22 +132,22 @@ function createBug(language_data) {
     let ul = document.querySelector(".foundBug > ul")
 
     if (browser_language in language_data.foundBug.h4) {
-        h4.innerHTML = language_data.foundBug.h4[browser_language]
-        p.innerHTML = language_data.foundBug.p[browser_language]
+        h4.textContent = language_data.foundBug.h4[browser_language]
+        p.textContent = language_data.foundBug.p[browser_language]
 
         language_data.foundBug.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = listItem[browser_language]
+            li.textContent = listItem[browser_language]
             ul.appendChild(li)
         })
 
     } else {
-        h4.innerHTML = language_data.foundBug.h4.en
-        p.innerHTML = language_data.foundBug.p.en
+        h4.textContent = language_data.foundBug.h4.en
+        p.textContent = language_data.foundBug.p.en
 
         language_data.foundBug.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = listItem.en
+            li.textContent = listItem.en
             ul.appendChild(li)
         })
     }
@@ -159,22 +159,22 @@ function createYourOwnServer(language_data) {
     let ul = document.querySelector(".yourOwnServer > ul")
 
     if (browser_language in language_data.yourOwnServer.h4) {
-        h4.innerHTML = language_data.yourOwnServer.h4[browser_language]
-        p.innerHTML = language_data.yourOwnServer.p[browser_language]
+        h4.textContent = language_data.yourOwnServer.h4[browser_language]
+        p.textContent = language_data.yourOwnServer.p[browser_language]
 
         language_data.yourOwnServer.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = listItem[browser_language]
+            li.textContent = listItem[browser_language]
             ul.appendChild(li)
         })
 
     } else {
-        h4.innerHTML = language_data.yourOwnServer.h4.en
-        p.innerHTML = language_data.yourOwnServer.p.en
+        h4.textContent = language_data.yourOwnServer.h4.en
+        p.textContent = language_data.yourOwnServer.p.en
 
         language_data.yourOwnServer.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = listItem.en
+            li.textContent = listItem.en
             ul.appendChild(li)
         })
     }
@@ -186,22 +186,22 @@ function createContributeUpstream(language_data) {
     let ul = document.querySelector(".contributeUpstream > ul")
 
     if (browser_language in language_data.contributeUpstream.h4) {
-        h4.innerHTML = language_data.contributeUpstream.h4[browser_language]
-        p.innerHTML = language_data.contributeUpstream.p[browser_language]
+        h4.textContent = language_data.contributeUpstream.h4[browser_language]
+        p.textContent = language_data.contributeUpstream.p[browser_language]
 
         language_data.contributeUpstream.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = listItem[browser_language]
+            li.textContent = listItem[browser_language]
             ul.appendChild(li)
         })
 
     } else {
-        h4.innerHTML = language_data.contributeUpstream.h4.en
-        p.innerHTML = language_data.contributeUpstream.p.en
+        h4.textContent = language_data.contributeUpstream.h4.en
+        p.textContent = language_data.contributeUpstream.p.en
 
         language_data.contributeUpstream.li.forEach((listItem) => {
             let li = document.createElement("li")
-            li.innerHTML = listItem.en
+            li.textContent = listItem.en
             ul.appendChild(li)
         })
     }

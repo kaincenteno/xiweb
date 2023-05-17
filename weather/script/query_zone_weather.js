@@ -17,7 +17,7 @@ fetch("/weather/php/queryZoneWeather.php")
 
       for (let x = 0; x < data[zone].length; x++) {
         let td = document.createElement("td")
-        td.innerHTML = data[zone][x]
+        td.textContent = data[zone][x]
         tr.appendChild(td)
       }
     }

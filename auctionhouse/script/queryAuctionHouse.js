@@ -40,10 +40,10 @@ function queryAuctionHouse() {
       let th2 = document.createElement('th')
       let th3 = document.createElement('th')
       let th4 = document.createElement('th')
-      th1.innerHTML = 'Category'
-      th2.innerHTML = 'Name'
-      th3.innerHTML = 'Stack'
-      th4.innerHTML = 'Listings'
+      th1.textContent = 'Category'
+      th2.textContent = 'Name'
+      th3.textContent = 'Stack'
+      th4.textContent = 'Listings'
 
       let tr = document.createElement('tr')
       thead.appendChild(tr)
@@ -62,10 +62,10 @@ function queryAuctionHouse() {
           let tdata2 = document.createElement('td')
           let tdata3 = document.createElement('td')
           let tdata4 = document.createElement('td')
-          tdata1.innerHTML = itemCategory[i]
-          tdata2.innerHTML = itemName[i]
-          tdata3.innerHTML = itemStackable[i]
-          tdata4.innerHTML = itemListingCount[i]
+          tdata1.textContent = itemCategory[i]
+          tdata2.textContent = itemName[i]
+          tdata3.textContent = itemStackable[i]
+          tdata4.textContent = itemListingCount[i]
           let row2 = document.createElement('tr')
           row2.appendChild(tdata1)
           row2.appendChild(tdata2)
@@ -82,7 +82,7 @@ function queryAuctionHouse() {
             let categoryId = document.querySelectorAll(".auctionHouse > table > tbody > tr > td:first-child")
 
             for (let element of categoryId) {
-              element.innerHTML = result.value[element.innerHTML]
+              element.textContent = result.value[element.textContent]
             }}
           )
         )

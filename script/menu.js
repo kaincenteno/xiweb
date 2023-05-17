@@ -14,7 +14,7 @@ function createMenu() {
 
     menuItems.forEach((item) => {
         let button = document.createElement("button")
-        button.innerHTML = item[0]
+        button.textContent = item[0]
         button.setAttribute("onClick", `location.href='${item[1]}'`)
         div.appendChild(button)
     })
