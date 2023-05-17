@@ -1,4 +1,4 @@
-fetch("weather/php/queryZoneWeather.php")
+fetch("/weather/php/queryZoneWeather.php")
   .then((response) => {
     if(!response.ok){
       throw new Error("Something went wrong!")
