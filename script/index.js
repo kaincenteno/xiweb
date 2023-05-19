@@ -15,7 +15,7 @@ async function get_language_data() {
             console.log(languageId)
             console.log(language_data[languageId])
             console.log(language_data[languageId]["en"])
-            idTag = document.getElementById(languageId)
+            let idTag = document.getElementById(languageId)
             idTag.textContent = language_data[languageId]["en"]
         }
     }
