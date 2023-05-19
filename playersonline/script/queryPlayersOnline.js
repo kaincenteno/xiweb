@@ -21,26 +21,26 @@ Promise.all([jobIdPromise, playersOnlinePromise])
     let playersOnline = values[1]
     let tbody = document.querySelector(".onlineNow > table > tbody")
 
-    for(let row = 0; row < playersOnline.length; row++) {
+    for(const player of playersOnline) {
       let tr = document.createElement("tr")
 
       let td1 = document.createElement("td")
       let td2 = document.createElement("td")
       let td3 = document.createElement("td")
       let td4 = document.createElement("td")
-      td1.textContent = playersOnline[row]["mlvl"] + " " + jobId[playersOnline[row]["mjob"]]
+      td1.textContent = player["mlvl"] + " " + jobId[player["mjob"]]
       tr.appendChild(td1)
 
-      if(playersOnline[row]["slvl"] == 0) {
+      if(player["slvl"] == 0) {
         td2.textContent = ""
       } else {
-        td2.textContent = playersOnline[row]["slvl"] + " " + jobId[playersOnline[row]["sjob"]]
+        td2.textContent = player["slvl"] + " " + jobId[player["sjob"]]
       }
       tr.appendChild(td2)
 
-      td3.textContent = playersOnline[row]["charname"]
+      td3.textContent = player["charname"]
       tr.appendChild(td3)
-      td4.textContent = playersOnline[row]["zonename"]
+      td4.textContent = player["zonename"]
       tr.appendChild(td4)
 
       tbody.appendChild(tr)
