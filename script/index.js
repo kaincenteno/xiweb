@@ -1,6 +1,5 @@
 let browser_language = navigator.language
 browser_language = browser_language.slice(0, 2)
-console.log(browser_language)
 
 async function get_language_data() {
     const response = await fetch('./script/language/index.json')
