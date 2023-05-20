@@ -1,6 +1,6 @@
 async function getAHCategoryID() {
   const response = await fetch("../globals/ahID.json")
-  const jsonData = await response.json()
+  const jsonData = response.json()
   return jsonData
 }
 
