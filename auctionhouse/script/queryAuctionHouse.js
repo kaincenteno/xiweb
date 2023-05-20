@@ -79,7 +79,6 @@ function createAuctionHouseTable(values) {
   console.log(auctionHouse)
 }
 
-
 let fieldQuery = document.getElementById('itemField').value
 
 document.getElementById('searchButton').addEventListener('click', function() {
