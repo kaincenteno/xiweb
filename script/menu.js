@@ -3,7 +3,7 @@ function createMenu() {
     let rootUrl = window.location.origin
 
     const menuItems = [
-        ["Home", `${rootUrl}/index.php`],
+        ["Home", `${rootUrl}/index.html`],
         ["Server Status", "https://status.catsangel.com"],
         ["Players Currently Online", `${rootUrl}/playersonline`],
         ["Weather Forecast", `${rootUrl}/weather`],

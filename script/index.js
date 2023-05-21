@@ -1,24 +1,25 @@
-let browser_language = navigator.language
-browser_language = browser_language.slice(0, 2)
+async function getLanguageData() {
+    let response = await fetch("/script/language/index.json")
+    let jsonData =  response.json()
 
-async function get_language_data() {
-    const response = await fetch('./script/language/index.json')
-    const language_data = await response.json()
+    return jsonData
+  }
 
-    for(let languageId in language_data) {
-        if (["zh", "es"].includes(browser_language)) {
-            console.log(language_data[languageId])
-            console.log(language_data[languageId][browser_language])
-            let idTag = document.getElementById(language_data[languageId])
-            idTag.textContent = language_data[languageId][browser_language]
-        } else {
-            console.log(languageId)
-            console.log(language_data[languageId])
-            console.log(language_data[languageId]["en"])
-            let idTag = document.getElementById(languageId)
-            idTag.textContent = language_data[languageId]["en"]
+let languageDataPromise = getLanguageData()
+
+Promise.all([languageDataPromise])
+    .then((values) => {
+        let languageData = values[0]
+        let browser_language = navigator.language
+        browser_language = browser_language.slice(0, 2)
+
+        for(let languageId in languageData) {
+            if (["zh", "es"].includes(browser_language)) {
+                let idTag = document.getElementById(languageId)
+                idTag.textContent = languageData[languageId][browser_language]
+            } else {
+                let idTag = document.getElementById(languageId)
+                idTag.textContent = languageData[languageId]["en"]
+            }
         }
-    }
-}
-
-get_language_data()
+    })
