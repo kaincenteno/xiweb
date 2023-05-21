@@ -1,101 +1,105 @@
 async function getAHCategoryID() {
-  const response = await fetch("../globals/ahID.json")
-  const jsonData = await response.json()
+  const response = await fetch("/globals/ahID.json")
+  const jsonData = response.json()
+
   return jsonData
 }
 
+async function queryAuctionHouse() {
+  const response = await fetch("/auctionhouse/php/query_auction_house.php")
+  const jsonData = response.json()
 
-function queryAuctionHouse() {
+  return jsonData
+}
 
-  let auctionTable = document.querySelector(".auctionHouse > table")
-  if (auctionTable) {
-    auctionTable.remove()
+function createAuctionHouseTable(values) {
+  const ahId = values[0]
+  const auctionHouse = values[1]
+
+  const itemCategory = auctionHouse[0]
+  const itemName = auctionHouse[1]
+  const itemStackable = auctionHouse[2]
+  const itemListingCount = auctionHouse[3]
+
+  let div = document.querySelector(".auctionHouse")
+
+  // checks if table exists, if so erases it.
+  if (document.getElementById("auctionHouseTable")) {
+    document.getElementById("auctionHouseTable").remove()
   }
 
-  fetch("/auctionhouse/php/query_auction_house.php")
-    .then((response) => {
-      if(!response.ok){
-        throw new Error("Something went wrong!");
-      }
+  let table = document.createElement('table')
+  table.setAttribute("id", "auctionHouseTable")
+  div.appendChild(table)
+  table.classList.add('plaintable')
 
-      return response.json()
-    })
+  let thead = document.createElement('thead')
+  table.appendChild(thead)
 
-    .then((data) => {
-      const itemCategory = data[0]
-      const itemName = data[1]
-      const itemStackable = data[2]
-      const itemListingCount = data[3]
+  let th1 = document.createElement('th')
+  let th2 = document.createElement('th')
+  let th3 = document.createElement('th')
+  let th4 = document.createElement('th')
+  th1.textContent = 'Category'
+  th2.textContent = 'Name'
+  th3.textContent = 'Stack'
+  th4.textContent = 'Listings'
 
-      let div = document.querySelector(".auctionHouse")
+  let tr = document.createElement('tr')
+  thead.appendChild(tr)
+  tr.appendChild(th1)
+  tr.appendChild(th2)
+  tr.appendChild(th3)
+  tr.appendChild(th4)
 
-      let table = document.createElement('table')
-      div.appendChild(table)
-      table.classList.add('plaintable')
+  let tbody = document.createElement('tbody')
+  table.appendChild(tbody)
 
-      let thead = document.createElement('thead')
-      table.appendChild(thead)
+  let fieldQuery = document.getElementById('itemField').value
+  for (let i = 0; i < itemName.length; i++) {
+    if (itemName[i].includes(fieldQuery.toLowerCase())) {
+      let tdata1 = document.createElement('td')
+      let tdata2 = document.createElement('td')
+      let tdata3 = document.createElement('td')
+      let tdata4 = document.createElement('td')
+      tdata1.textContent = ahId[itemCategory[i]]
+      tdata2.textContent = itemName[i]
+      tdata3.textContent = itemStackable[i]
+      tdata4.textContent = itemListingCount[i]
+      let row2 = document.createElement('tr')
+      row2.appendChild(tdata1)
+      row2.appendChild(tdata2)
+      row2.appendChild(tdata3)
+      row2.appendChild(tdata4)
+      tbody.appendChild(row2)
+    }
+  }
 
-      let th1 = document.createElement('th')
-      let th2 = document.createElement('th')
-      let th3 = document.createElement('th')
-      let th4 = document.createElement('th')
-      th1.innerHTML = 'Category'
-      th2.innerHTML = 'Name'
-      th3.innerHTML = 'Stack'
-      th4.innerHTML = 'Listings'
-
-      let tr = document.createElement('tr')
-      thead.appendChild(tr)
-      tr.appendChild(th1)
-      tr.appendChild(th2)
-      tr.appendChild(th3)
-      tr.appendChild(th4)
-
-      let tbody = document.createElement('tbody')
-      table.appendChild(tbody)
-
-      let fieldQuery = document.getElementById('itemField').value
-      for (let i = 0; i < itemName.length; i++) {
-        if (itemName[i].includes(fieldQuery.toLowerCase())) {
-          let tdata1 = document.createElement('td')
-          let tdata2 = document.createElement('td')
-          let tdata3 = document.createElement('td')
-          let tdata4 = document.createElement('td')
-          tdata1.innerHTML = itemCategory[i]
-          tdata2.innerHTML = itemName[i]
-          tdata3.innerHTML = itemStackable[i]
-          tdata4.innerHTML = itemListingCount[i]
-          let row2 = document.createElement('tr')
-          row2.appendChild(tdata1)
-          row2.appendChild(tdata2)
-          row2.appendChild(tdata3)
-          row2.appendChild(tdata4)
-          tbody.appendChild(row2)
-        }
-      }
-
-      let ahID = getAHCategoryID()
-      Promise.allSettled([ahID])
-        .then((results) =>
-          results.forEach((result) => {
-            let categoryId = document.querySelectorAll(".auctionHouse > table > tbody > tr > td:first-child")
-
-            for (let element of categoryId) {
-              element.innerHTML = result.value[element.innerHTML]
-            }}
-          )
-        )
-    })
-
-    .catch(console.error)
+  console.log(ahId)
+  console.log(auctionHouse)
 }
 
 let fieldQuery = document.getElementById('itemField').value
-document.getElementById('searchButton').addEventListener('click', queryAuctionHouse)
+
+document.getElementById('searchButton').addEventListener('click', function() {
+  let ahIdPromise = getAHCategoryID()
+  let auctionHousePromise = queryAuctionHouse()
+
+  Promise.all([ahIdPromise, auctionHousePromise])
+    .then((values) => {
+      createAuctionHouseTable(values)
+    })
+})
+
 document.getElementById('itemField').addEventListener('keyup', function(event) {
     if (event.code === 'Enter') {
         event.preventDefault()
-        queryAuctionHouse()
+        let ahIdPromise = getAHCategoryID()
+        let auctionHousePromise = queryAuctionHouse()
+
+        Promise.all([ahIdPromise, auctionHousePromise])
+          .then((values) => {
+            createAuctionHouseTable(values)
+          })
     }
 })

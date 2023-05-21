@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shows information of players currently online">
+  <title>xiweb - Players Online</title>
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+</head>
+
+<body>
+  <div class="content">
+    <div class='menu'></div>
+
+    <div class="onlineNow">
+      <table class="plaintable">
+        <caption>Characters currently online</caption>
+        <thead>
+          <tr>
+            <th>Main Job</th>
+            <th>Sub Job</th>
+            <th>Name</th>
+            <th>Zone</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/script/menu.js"></script>
+  <script type="text/javascript" src="/playersonline/script/queryPlayersOnline.js"></script>
+</body>

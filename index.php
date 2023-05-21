@@ -4,68 +4,81 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="xiweb is a website for displaying information from a landsandboat server">
-  <title>Welcome to xiweb</title>
+  <title id="head-title"></title>
   <link rel="stylesheet" href="css/style.css" type="text/css">
   <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
 </head>
 
 <body>
   <div class="content">
-    <div class='menu'></div>
+  <div class='menu'></div>
 
-    <div class="welcome">
-      <h1></h1>
-    </div>
+  <h4 id="about-us-title"></h4>
+  <p id="about-us"></p>
 
-    <div class="aboutUs">
-      <h4></h4>
-      <p></p>
-    </div>
+  <a href='https://wiki.catsangel.com'>
+    <h4 id="client-setup-title"></h4>
+    <p id="client-setup"></p>
+  </a>
 
-    <div class="clientSetup">
-      <h4></h4>
-      <p></p>
-    </div>
+  <a href='https://discord.gg/77j69vffNM'>
+    <h4 id="discord-title"></h4>
+    <p id="discord"></p>
+  </a>
 
-    <div class="discord">
-      <h4></h4>
-      <p></p>
-    </div>
+  <h4 id="rules-title"></h4>
+  <ul>
+    <li id="rules-1"></li>
+    <li id="rules-2"></li>
+    <li id="rules-3"></li>
+    <li id="rules-4"></li>
+    <li id="rules-5"></li>
+  </ul>
 
-    <div class="rules">
-      <h4></h4>
-      <ul></ul>
-    </div>
+  <h4 id="server-settings-title"></h4>
+  <ul>
+    <li id="server-settings-1"></li>
+    <li id="server-settings-2"></li>
+    <li id="server-settings-3"></li>
+    <li id="server-settings-4"></li>
+    <li id="server-settings-5"></li>
+  </ul>
 
-    <div class="serverSettings">
-      <h4></h4>
-      <ul></ul>
-    </div>
+  <h4 id="contribute-title"></h4>
+  <p id="contribute"></p>
+  <ul>
+    <a href='https://github.com/kaincenteno/xiweb'>
+      <li id="contribute-1"></li>
+    </a>
 
-    <div class="contribute">
-      <h4></h4>
-      <p></p>
-      <ul></ul>
-    </div>
+    <a href='https://github.com/kaincenteno/wiki'>
+      <li id="contribute-2"></li>
+    </a>
+  </ul>
 
-    <div class="foundBug">
-      <h4></h4>
-      <p></p>
-      <ul></ul>
-    </div>
+  <h4 id="found-a-bug-title"></h4>
+  <p id="found-a-bug"></p>
+  <ul>
+    <a href='https://github.com/LandSandBoat/server/discussions'>
+      <li id="found-a-bug-1"></li>
+    </a>
+  </ul>
 
-    <div class="yourOwnServer">
-      <h4></h4>
-      <p></p>
-      <ul></ul>
-    </div>
+  <h4 id="your-own-server-title"></h4>
+  <p id="your-own-server"></p>
+  <ul>
+    <a href='https://github.com/LandSandBoat/server/wiki'>
+      <li id="your-own-server-1"></li>
+    </a>
+  </ul>
 
-    <div class="contributeUpstream">
-      <h4></h4>
-      <p></p>
-      <ul></ul>
-    </div>
-  </div>
+  <h4 id="contribute-upstream-title"></h4>
+  <p id="contribute-upstream"></p>
+  <ul>
+    <a href='https://github.com/LandSandBoat/server'>
+      <li id="contribute-upstream-1"></li>
+    </a>
+  </ul>
 </body>
 
 <script type="text/javascript" src="script/index.js"></script>

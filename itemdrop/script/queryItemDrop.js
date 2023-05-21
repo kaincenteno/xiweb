@@ -64,11 +64,11 @@ function itemSearch() {
     let thead3 = document.createElement('th')
     let thead4 = document.createElement('th')
     let thead5 = document.createElement('th')
-    thead1.innerHTML = 'Item'
-    thead2.innerHTML = 'Drop Type'
-    thead3.innerHTML = 'Drop Rate'
-    thead4.innerHTML = 'Mob'
-    thead5.innerHTML = 'Zone'
+    thead1.textContent = 'Item'
+    thead2.textContent = 'Drop Type'
+    thead3.textContent = 'Drop Rate'
+    thead4.textContent = 'Mob'
+    thead5.textContent = 'Zone'
     let row1 = document.createElement('tr')
     row1.appendChild(thead1)
     row1.appendChild(thead2)
@@ -88,11 +88,11 @@ function itemSearch() {
             let tdata3 = document.createElement('td')
             let tdata4 = document.createElement('td')
             let tdata5 = document.createElement('td')
-            tdata1.innerHTML = ITEMNAME[itemId[i]]
-            tdata2.innerHTML = DROPTYPE[dropType[i]]
-            tdata3.innerHTML = dropRate[i]
-            tdata4.innerHTML = MOBNAME[poolId[i]]
-            tdata5.innerHTML = ZONEID[zoneName[i]]
+            tdata1.textContent = ITEMNAME[itemId[i]]
+            tdata2.textContent = DROPTYPE[dropType[i]]
+            tdata3.textContent = dropRate[i]
+            tdata4.textContent = MOBNAME[poolId[i]]
+            tdata5.textContent = ZONEID[zoneName[i]]
             let row2 = document.createElement('tr')
             row2.appendChild(tdata1)
             row2.appendChild(tdata2)
@@ -108,7 +108,7 @@ function itemSearch() {
     table.appendChild(tbody)
 
     // Inserts table inside the div
-    document.getElementById('result').innerHTML = ''
+    document.getElementById('result').textContent = ''
     document.getElementById('result').appendChild(table)
 }
 
