@@ -2,11 +2,12 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/database.php';
 use config\database;
 
-$itemId = array();
+$itemName = array();
 $dropType = array();
 $dropRate = array();
 $poolId = array();
 $zoneName = array();
+$itemNameLike = "%" . $_GET["itemName"] . "%";
 
 try {
     $conn = new PDO(
@@ -16,9 +17,9 @@ try {
     );
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $queryItems  = $conn->query('
+    $queryItems  = $conn->prepare('
         SELECT
-            md.itemId,
+            REPLACE(ib.name, "_", " ") AS "name",
             md.dropType,
             md.itemRate AS "drop_rate",
             mg.poolid,
@@ -26,10 +27,17 @@ try {
         FROM  mob_droplist md
         INNER JOIN
             mob_groups mg ON md.dropId = mg.dropid
-        ORDER BY mg.zoneid, mg.poolid, itemId ASC;');
+        INNER JOIN
+            item_basic ib ON md.itemId = ib.itemid
+        WHERE
+            ib.name LIKE :itemNameLike
+        ORDER BY mg.zoneid, mg.poolid, ib.name ASC;');
+    $queryItems->bindParam(":itemNameLike", $itemNameLike, PDO::PARAM_STR);
+    $queryItems->execute();
+
     $i = 0;
     while ($row = $queryItems->fetch()) {
-        $itemId[$i] = $row["itemId"];
+        $itemName[$i] = $row["name"];
         $dropType[$i] = $row["dropType"];
         if ($row["drop_rate"] == 0) {
             $dropRate[$i] = 'N/A';
@@ -41,7 +49,7 @@ try {
         $i = $i + 1;
     }
 
-    echo json_encode(array($itemId, $dropType, $dropRate, $poolId, $zoneName));
-} catch (PDOException $e){
+    echo json_encode(array($itemName, $dropType, $dropRate, $poolId, $zoneName));
+} catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
