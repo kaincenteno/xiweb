@@ -5,8 +5,10 @@ async function getAHCategoryID() {
   return jsonData
 }
 
-async function queryAuctionHouse() {
-  const response = await fetch("/auctionhouse/php/query_auction_house.php")
+async function queryAuctionHouse(itemName) {
+  const response = await fetch("/auctionhouse/php/query_auction_house.php?" + new URLSearchParams({
+    "itemName": itemName
+  }))
   const jsonData = response.json()
 
   return jsonData
@@ -55,35 +57,31 @@ function createAuctionHouseTable(values) {
   let tbody = document.createElement('tbody')
   table.appendChild(tbody)
 
-  let fieldQuery = document.getElementById('itemField').value
   for (let i = 0; i < itemName.length; i++) {
-    if (itemName[i].includes(fieldQuery.toLowerCase())) {
-      let tdata1 = document.createElement('td')
-      let tdata2 = document.createElement('td')
-      let tdata3 = document.createElement('td')
-      let tdata4 = document.createElement('td')
-      tdata1.textContent = ahId[itemCategory[i]]
-      tdata2.textContent = itemName[i]
-      tdata3.textContent = itemStackable[i]
-      tdata4.textContent = itemListingCount[i]
-      let row2 = document.createElement('tr')
-      row2.appendChild(tdata1)
-      row2.appendChild(tdata2)
-      row2.appendChild(tdata3)
-      row2.appendChild(tdata4)
-      tbody.appendChild(row2)
-    }
+    let tdata1 = document.createElement('td')
+    let tdata2 = document.createElement('td')
+    let tdata3 = document.createElement('td')
+    let tdata4 = document.createElement('td')
+    tdata1.textContent = ahId[itemCategory[i]]
+    tdata2.textContent = itemName[i]
+    tdata3.textContent = itemStackable[i]
+    tdata4.textContent = itemListingCount[i]
+    let row2 = document.createElement('tr')
+    row2.appendChild(tdata1)
+    row2.appendChild(tdata2)
+    row2.appendChild(tdata3)
+    row2.appendChild(tdata4)
+    tbody.appendChild(row2)
   }
 
   console.log(ahId)
   console.log(auctionHouse)
 }
 
-let fieldQuery = document.getElementById('itemField').value
-
 document.getElementById('searchButton').addEventListener('click', function() {
+  let fieldQuery = document.getElementById('itemField').value
   let ahIdPromise = getAHCategoryID()
-  let auctionHousePromise = queryAuctionHouse()
+  let auctionHousePromise = queryAuctionHouse(fieldQuery)
 
   Promise.all([ahIdPromise, auctionHousePromise])
     .then((values) => {
@@ -92,14 +90,15 @@ document.getElementById('searchButton').addEventListener('click', function() {
 })
 
 document.getElementById('itemField').addEventListener('keyup', function(event) {
-    if (event.code === 'Enter') {
-        event.preventDefault()
-        let ahIdPromise = getAHCategoryID()
-        let auctionHousePromise = queryAuctionHouse()
+  if (event.code === 'Enter') {
+    let fieldQuery = document.getElementById('itemField').value
+    event.preventDefault()
+    let ahIdPromise = getAHCategoryID()
+    let auctionHousePromise = queryAuctionHouse(fieldQuery)
 
-        Promise.all([ahIdPromise, auctionHousePromise])
-          .then((values) => {
-            createAuctionHouseTable(values)
-          })
-    }
+    Promise.all([ahIdPromise, auctionHousePromise])
+      .then((values) => {
+        createAuctionHouseTable(values)
+      })
+  }
 })

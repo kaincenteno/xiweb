@@ -6,6 +6,7 @@
     $name = array();
     $stack = array();
     $listings = array();
+    $itemName = "%" . $_GET["itemName"] . "%";
 
     try {
         $conn = new PDO(
@@ -15,7 +16,7 @@
         );
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $queryAH  = $conn->query('
+        $queryAH  = $conn->prepare('
             SELECT
                 ib.itemid,
                 ib.aH,
@@ -25,11 +26,16 @@
             FROM item_basic ib
             INNER JOIN
                 auction_house ah ON ib.itemid = ah.itemid
-            WHERE ah.buyer_name IS NULL
+            WHERE
+                ah.buyer_name IS NULL AND
+                ib.name LIKE :itemName
             GROUP BY ah.itemId, ah.stack
             ORDER BY ib.aH ASC, ib.itemId;');
+        $queryAH->bindParam(":itemName", $itemName, PDO::PARAM_STR);
+        $queryAH->execute();
+
         $i = 0;
-        while ($row = $queryAH->fetch()){
+        while ($row = $queryAH->fetch()) {
             if ($row["aH"] == 0) {
                 error_log(
                     "Item {$row["name"]} (itemid {$row["itemid"]}) doesnt have a valid category in globals/ahID.php",
