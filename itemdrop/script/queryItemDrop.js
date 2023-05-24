@@ -1,8 +1,7 @@
 let DROPTYPE
-let ITEMNAME
+let itemName
 let ZONEID
 let MOBNAME
-let itemId
 let dropType
 let dropRate
 let poolId
@@ -13,13 +12,6 @@ fetch('/globals/droptype.json')
     .then(response => response.json())
     .then(data => {
         DROPTYPE = data
-    })
-    .catch(console.error)
-
-fetch('/globals/itemname.json')
-    .then(response => response.json())
-    .then(data => {
-        ITEMNAME = data
     })
     .catch(console.error)
 
@@ -37,19 +29,21 @@ fetch('/globals/mobname.json')
     })
     .catch(console.error)
 
-fetch('/itemdrop/php/query_item_drop.php')
-    .then(response => response.json())
-    .then(data => {
-        itemId = data[0],
-        dropType = data[1],
-        dropRate = data[2],
-        poolId = data[3],
-        zoneName = data[4]
-    })
-    .catch(console.error)
+async function queryItemDrop(itemName) {
+    const response = await fetch("/itemdrop/php/query_item_drop.php?" + new URLSearchParams({
+        "itemName": itemName
+    }))
+    const jsonData = response.json()
 
-function itemSearch() {
-    let fieldQuery = document.getElementById('itemField').value
+    return jsonData
+    }
+
+function itemSearch(values) {
+    let itemName = values[0]
+    let dropType = values[1]
+    let dropRate = values[2]
+    let poolId = values[3]
+    let zoneName = values[4]
 
     // create table node
     let table = document.createElement('table')
@@ -81,26 +75,24 @@ function itemSearch() {
     let tbody = document.createElement('tbody')
 
     // Creating Content Rows
-    for (let i = 0; i < itemId.length; i++) {
-        if (ITEMNAME[itemId[i]].includes(fieldQuery.toLowerCase()) && ITEMNAME[itemId[i]].length >= 5 ) {
-            let tdata1 = document.createElement('td')
-            let tdata2 = document.createElement('td')
-            let tdata3 = document.createElement('td')
-            let tdata4 = document.createElement('td')
-            let tdata5 = document.createElement('td')
-            tdata1.textContent = ITEMNAME[itemId[i]]
-            tdata2.textContent = DROPTYPE[dropType[i]]
-            tdata3.textContent = dropRate[i]
-            tdata4.textContent = MOBNAME[poolId[i]]
-            tdata5.textContent = ZONEID[zoneName[i]]
-            let row2 = document.createElement('tr')
-            row2.appendChild(tdata1)
-            row2.appendChild(tdata2)
-            row2.appendChild(tdata3)
-            row2.appendChild(tdata4)
-            row2.appendChild(tdata5)
-            tbody.appendChild(row2)
-        }
+    for (let i = 0; i < itemName.length; i++) {
+        let tdata1 = document.createElement('td')
+        let tdata2 = document.createElement('td')
+        let tdata3 = document.createElement('td')
+        let tdata4 = document.createElement('td')
+        let tdata5 = document.createElement('td')
+        tdata1.textContent = itemName[i]
+        tdata2.textContent = DROPTYPE[dropType[i]]
+        tdata3.textContent = dropRate[i]
+        tdata4.textContent = MOBNAME[poolId[i]]
+        tdata5.textContent = ZONEID[zoneName[i]]
+        let row2 = document.createElement('tr')
+        row2.appendChild(tdata1)
+        row2.appendChild(tdata2)
+        row2.appendChild(tdata3)
+        row2.appendChild(tdata4)
+        row2.appendChild(tdata5)
+        tbody.appendChild(row2)
     }
 
     // Append all content from above to table header and body
@@ -112,10 +104,25 @@ function itemSearch() {
     document.getElementById('result').appendChild(table)
 }
 
-document.getElementById('searchButton').addEventListener('click', itemSearch)
+document.getElementById('searchButton').addEventListener('click', function() {
+    let fieldQuery = document.getElementById('itemField').value
+
+    let queryItemDropPromise = queryItemDrop(fieldQuery)
+
+    Promise.all([queryItemDropPromise])
+      .then((values) => {
+        itemSearch(values[0])
+      })
+})
 document.getElementById('itemField').addEventListener('keyup', function(event) {
     if (event.code === 'Enter') {
+        let fieldQuery = document.getElementById('itemField').value
         event.preventDefault()
-        itemSearch()
+        let queryItemDropPromise = queryItemDrop(fieldQuery)
+
+        Promise.all([queryItemDropPromise])
+          .then((values) => {
+            itemSearch(values[0])
+          })
     }
 })
