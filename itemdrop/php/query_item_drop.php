@@ -19,7 +19,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $queryItems  = $conn->prepare('
         SELECT
-        	REPLACE(ib.name, "_", " ") AS "name",
+            REPLACE(ib.name, "_", " ") AS "name",
             md.dropType,
             md.itemRate AS "drop_rate",
             mg.poolid,
