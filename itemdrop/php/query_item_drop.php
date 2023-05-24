@@ -42,6 +42,6 @@ try {
     }
 
     echo json_encode(array($itemId, $dropType, $dropRate, $poolId, $zoneName));
-} catch (PDOException $e){
+} catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
