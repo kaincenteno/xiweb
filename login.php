@@ -4,13 +4,6 @@ use config\database;
 
 $username = $_POST['username'];
 $password = $_POST['password'];
-
-
-# Password only reads 16 characters in server
-if (strlen($password) > 16) {
-   $password = substr($password, 0, 16);
-}
-
 $account = array();
 
 try {
