@@ -117,6 +117,7 @@ document.getElementById('searchButton').addEventListener('click', function() {
 document.getElementById('itemField').addEventListener('keyup', function(event) {
     if (event.code === 'Enter') {
         let fieldQuery = document.getElementById('itemField').value
+        fieldQuery = fieldQuery.replace(/\s/g, '_')
         event.preventDefault()
         let queryItemDropPromise = queryItemDrop(fieldQuery)
 
