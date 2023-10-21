@@ -80,6 +80,7 @@ function createAuctionHouseTable(values) {
 
 document.getElementById('searchButton').addEventListener('click', function() {
   let fieldQuery = document.getElementById('itemField').value
+  fieldQuery = fieldQuery.replace(/\s/g, '_')
   let ahIdPromise = getAHCategoryID()
   let auctionHousePromise = queryAuctionHouse(fieldQuery)
 
