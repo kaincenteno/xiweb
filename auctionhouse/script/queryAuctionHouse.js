@@ -14,6 +14,19 @@ async function queryAuctionHouse(itemName) {
   return jsonData
 }
 
+// Gets text from field and creates table
+function triggerSearchEvent() {
+  let fieldQuery = document.getElementById('itemField').value
+  fieldQuery = fieldQuery.replace(/\s/g, '_')
+  let ahIdPromise = getAHCategoryID()
+  let auctionHousePromise = queryAuctionHouse(fieldQuery)
+
+  Promise.all([ahIdPromise, auctionHousePromise])
+    .then((values) => {
+      createAuctionHouseTable(values)
+    })
+}
+
 function createAuctionHouseTable(values) {
   const ahId = values[0]
   const auctionHouse = values[1]
@@ -79,27 +92,11 @@ function createAuctionHouseTable(values) {
 }
 
 document.getElementById('searchButton').addEventListener('click', function() {
-  let fieldQuery = document.getElementById('itemField').value
-  fieldQuery = fieldQuery.replace(/\s/g, '_')
-  let ahIdPromise = getAHCategoryID()
-  let auctionHousePromise = queryAuctionHouse(fieldQuery)
-
-  Promise.all([ahIdPromise, auctionHousePromise])
-    .then((values) => {
-      createAuctionHouseTable(values)
-    })
+  triggerSearchEvent()
 })
 
 document.getElementById('itemField').addEventListener('keyup', function(event) {
   if (event.code === 'Enter') {
-    let fieldQuery = document.getElementById('itemField').value
-    event.preventDefault()
-    let ahIdPromise = getAHCategoryID()
-    let auctionHousePromise = queryAuctionHouse(fieldQuery)
-
-    Promise.all([ahIdPromise, auctionHousePromise])
-      .then((values) => {
-        createAuctionHouseTable(values)
-      })
+    triggerSearchEvent()
   }
 })
