@@ -2,7 +2,7 @@
 
 ## Summary
 
-xi-web is an open source website that collect information from the [LandSandBoat](https://github.com/LandSandBoat/server) server emulator
+xi-web was an open source website that collect information from server
 
 ## License
 
